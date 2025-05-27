@@ -1,84 +1,58 @@
 import React from 'react';
-import Image7 from '../../assets/Images/Image7.png';
-import Image8 from '../../assets/Images/Image8.png';
-import Image9 from '../../assets/Images/Image9.png';
-import Image10 from '../../assets/Images/Image10.png';
-import Image11 from '../../assets/Images/Image11.png';
-import Image12 from '../../assets/Images/Image12.png';
-import Image13 from '../../assets/Images/Image13.png';
-import Image14 from '../../assets/Images/Image14.png';
+import girl from '../../assets/Images/Rectangle 390.png';
+import girl1 from '../../assets/Images/Rectangle 392.png';
+import boy from '../../assets/Images/Rectangle 394.png';
+import boy1 from '../../assets/Images/Rectangle 390 (1).png';
+import girl2 from '../../assets/Images/Rectangle 392 (1).png';
+import girl3 from '../../assets/Images/Rectangle 394 (1).png';
+import flowerLeft from '../../assets/Images/Zscasssc 2.png';
+import flowerRight from '../../assets/Images/Zscasssc 4.png';
 
 const members = [
-  { id: 1, name: 'Aish', age: 25, image: Image7 },
-  { id: 2, name: 'Aarti', age: 28, image: Image8 },
-  { id: 3, name: 'Rahul', age: 23, image: Image9 },
-  { id: 4, name: 'Meera', age: 31, image: Image10 },
-  { id: 5, name: 'Pritam', age: 27, image: Image11 },
-  { id: 6, name: 'Zara', age: 29, image: Image12 },
-  { id: 7, name: 'Shweta', age: 27, image: Image13 },
-  { id: 8, name: 'Sherya', age: 29, image: Image14 },
+  { id: 1, image: girl, name: 'Anjela, 23' },
+  { id: 2, image: girl1, name: 'Sonia' },
+  { id: 3, image: boy, name: 'Varun' },
+  { id: 4, image: boy1, name: 'Tarun' },
+  { id: 5, image: girl2, name: 'Ankita' },
+  { id: 6, image: girl3, name: 'Simran Kaur' },
 ];
 
 function ThirdSection() {
   return (
-    <section className="py-5 px-4 sm:px-12 ">
-      <h1 className="text-4xl sm:text-5xl  font-bold md:text-6xl lg:text-7xl mb-12 text-black text-center gilda-display-regular leading-tight">
-  HeartSync Recently
-  <br />
-  <span className="inline-block">
-    Jo
-    <span className="relative inline-block ">
-      <span className="inline-block">
-        <svg
-          className="w-[12px] h-[20px] md:h-[28px] lg:w-[18px] lg:h-[30px]"
-          viewBox="0 0 6 100"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line x1="3" y1="0" x2="3" y2="100" stroke="black" strokeWidth="15" />
-        </svg>
-      </span>
-      <span className="absolute top-[-14px] sm:top-[-1px] left-1/2 transform -translate-x-1/2 text-[#EB5757] text-xl sm:text-2xl">
-        ❤️
-      </span>
-    </span>
-    ned   Members
-  </span>
-</h1>
+    <section className="relative bg-gray-100 py-20 px-4 lg:px-20 overflow-hidden">
 
+      {/* Side Flowers */}
+      <img src={flowerLeft} alt="flower" className="absolute left-0 top-0 w-28 md:w-40" />
+      <img src={flowerLeft} alt="flower" className="absolute left-0 bottom-0 w-28 md:w-40" />
+      <img src={flowerRight} alt="flower" className="absolute right-0 top-0 w-28 md:w-40" />
+      <img src={flowerRight} alt="flower" className="absolute right-0 bottom-0 w-28 md:w-40" />
 
+      {/* Title */}
+      <div className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-semibold text-black font-serif">Heartsync Recently</h1>
+        <h2 className="text-3xl text-rose-600 italic mt-2">Joined Members</h2>
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      {/* Members Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-15 gap-x-10 relative z-10">
         {members.map((member) => (
           <div
             key={member.id}
-            className="bg-white rounded-3xl gilda-display-regular shadow-2xl p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="flex flex-col items-center text-center "
           >
-            <div className="relative mb-6">
+            {/* Arch container */}
+            <div className="w-48 h-64 md:w-56 md:h-72 lg:w-72 lg:h-96 p-2 bg-white rounded-t-full shadow-md overflow-hidden flex items-end justify-center">
               <img
                 src={member.image}
                 alt={member.name}
-                className="w-full h-80 object-cover rounded-2xl shadow-md"
+                className="h-full w-full object-cover rounded-t-full"
               />
-
-              {/* Heart top-right */}
-              <div className="absolute -top-3 -right-3 bg-white p-2 rounded-full shadow-md">
-                <span className="text-rose-500 text-xl">❤️</span>
-              </div>
-
-              {/* Online Badge bottom-left */}
-              <div className="absolute bottom-4 left-4 flex justify-center items-center gap- bg-[#DE5353] px-1  py-1 rounded-full shadow-sm">
-                <span className="text-white text-xs text-center font-medium">Online</span>
-                <span className="w-3 h-3 relative  left-2 right-1  bg-green-500 rounded-full"></span>
-              </div>
             </div>
-
-            <div className=" space-y-1 gilda-display-regular">
-              <h2 className="text-2xl font-semibold font-cursive">
-                {member.name}, {member.age}
-              </h2>
-              {/* <p className="text-[#53321B] text-sm jost">
-                Looking for a perfect match
-              </p> */}
+            <div className="mt-4 w-48 md:w-56">
+              <h3 className="text-lg font-medium text-rose-600">{member.name}</h3>
+              <p className="text-sm text-gray-700 mt-1">
+                Learn from them and try to <br /> make it to this board.
+              </p>
             </div>
           </div>
         ))}
