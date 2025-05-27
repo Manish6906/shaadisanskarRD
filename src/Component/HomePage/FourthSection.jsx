@@ -5,7 +5,7 @@ import smallflower1 from "../../assets/Images/jnbdjb 2.png";
 
 const OurStoriesSection = () => {
   return (
-    <div className="relative bg-white py-20 px-4 sm:px-8 lg:px-20 overflow-hidden font-jost">
+    <div className="relative bg-pink-50 py-20 px-4 sm:px-8 lg:px-20 overflow-hidden font-jost">
       {/* Floral corners - enlarged */}
       <img
         src={smallflower}

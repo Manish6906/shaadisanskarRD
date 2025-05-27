@@ -19,7 +19,7 @@ const members = [
 
 function ThirdSection() {
   return (
-    <section className="relative bg-gray-100 py-20 px-4 lg:px-20 overflow-hidden">
+    <section className="relative bg-pink-50 py-20 px-4 lg:px-20 overflow-hidden">
 
       {/* Side Flowers */}
       <img src={flowerLeft} alt="flower" className="absolute left-0 top-0 w-28 md:w-40" />
