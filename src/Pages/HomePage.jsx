@@ -22,7 +22,7 @@ function  HomePage() {
 
     <SecondSection />
     <ThirdSection />
-    {/* <FourthSection /> */}
+    <FourthSection />
     {/* <FeesCharge /> */}
     <FifthSection />
     
