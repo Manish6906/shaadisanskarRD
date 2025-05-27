@@ -47,7 +47,7 @@ function PlanPage() {
     <div
       className="relative bg-white py-1 px-1 jost sm:px-8"
       style={{
-        backgroundImage: `url(${Rectangle67})`,
+        backgroundImage: url`(${Rectangle67})`,
         backgroundSize: 'cover  ',
         backgroundRepeat: 'no-repeat',
       }}
