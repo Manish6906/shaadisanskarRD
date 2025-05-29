@@ -13,8 +13,10 @@ const FifthSection = () => {
       name: "Gold",
       price: 149,
       credits: 10,
-      features: ["Send messages up to 10 people", "View profiles"],
-      bgClass: "bg-gradient-to-tr from-gray-400 via-gray-600 to-gray-800 text-white",
+      features: [
+        "Send messages upto 10 people",
+        "View profiles",
+      ],
     },
     {
       name: "Diamond",
@@ -46,31 +48,27 @@ const FifthSection = () => {
   const handlePayment = async (plan) => {
     if (!user) {
       toast.warning("Please login first.");
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000);
+      setTimeout(() => navigate("/login"), 1000);
       return;
     }
 
     setProcessingPlan(plan.name);
 
     try {
-      const orderResponse = await axios.post(`${API}api/payment/create-order`, {
-        amount: plan.price,
+      const { data } = await axios.post(`${API}api/payment/create-order`, {
+        amount: plan.price * 100,
       });
-
-      const { id: order_id, currency, amount } = orderResponse.data;
 
       const options = {
         key: RAZORPAY_KEY,
-        amount: amount,
-        currency: currency,
+        amount: data.amount,
+        currency: data.currency,
         name: "Shaadi Website",
         description: `${plan.name} Plan Purchase`,
-        order_id: order_id,
+        order_id: data.id,
         handler: async function (response) {
           try {
-            const verifyResponse = await axios.post(`${API}api/payment/verify-payment`, {
+            await axios.post(`${API}api/payment/verify-payment`, {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
@@ -78,13 +76,9 @@ const FifthSection = () => {
               plan: plan.credits,
               planName: plan.name,
             });
-
             toast.success("Payment Successful! Credits Added.");
-            setTimeout(() => {
-              navigate("/userReceipts");
-            }, 1000);
+            setTimeout(() => navigate("/userReceipts"), 1000);
           } catch (error) {
-            console.error("Payment verification failed", error);
             toast.error("Payment verification failed.");
           } finally {
             setProcessingPlan(null);
@@ -102,82 +96,67 @@ const FifthSection = () => {
 
       const rzp = new window.Razorpay(options);
       rzp.open();
-
-      rzp.on("payment.failed", function (response) {
+      rzp.on("payment.failed", (response) => {
         alert("Payment failed: " + response.error.description);
         setProcessingPlan(null);
       });
-    } catch (error) {
-      console.error("Error in payment process:", error);
-      alert("Something went wrong. Please try again.");
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
       setProcessingPlan(null);
     }
   };
 
   return (
-    <div className="bg-pink-50 py-10 px-4 sm:px-6 lg:px-10 ">
-    <div className="text-center mb-12">
-  <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Choose the Perfect Plan</h1>
-  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-    Upgrade your experience by selecting a plan that suits your needs. Get more credits and reach more profiles.
-  </p>
-</div>
-
+    <div className="min-h-screen bg-pink-50 py-16 px-6 relative overflow-hidden">
       <ToastContainer />
+      
+      {/* Optional Decorative Circles */}
+      <div className="absolute top-0 left-0 w-48 h-48 bg-red-300 rounded-full blur-3xl opacity-30 -z-10" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-red-400 rounded-full blur-3xl opacity-20 -z-10" />
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-4">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-black">
+          Upgrade to <span className="text-red-400">Premium</span> & Unlock Features
+        </h1>
+        <p className="text-gray-900 mt-3 text-lg">Exclusive membership benefits</p>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {plans.map((plan, index) => (
           <div
             key={index}
-            className={`relative rounded-2xl p-8 flex flex-col items-center text-center
-              shadow-2xl transform transition-transform duration-300
-              hover:scale-105 hover:shadow-3xl
-              ${plan.bgClass}
-              ${processingPlan === plan.name ? "opacity-70 cursor-not-allowed" : "cursor-pointer"}
-            `}
+            className="relative bg-red-400 bg-opacity-10 backdrop-blur-lg p-8 rounded-3xl shadow-lg flex flex-col items-center text-white hover:scale-105 transition-transform duration-300"
           >
-            {plan.name === "Diamond" && (
-              <div className="absolute top-4 right-4 bg-yellow-300 text-red-700 font-bold text-xs uppercase px-3 py-1 rounded-full shadow-md animate-pulse">
-                Popular
-              </div>
-            )}
+            {/* Price badge */}
+            <div className="absolute -top-6 w-24 h-24 bg-red-300 rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
+              ₹{plan.price}
+            </div>
 
-            <h2 className="text-3xl font-extrabold mb-3 drop-shadow-lg">{plan.name}</h2>
-            <p className="text-4xl font-black mb-2">₹{plan.price}</p>
-            <p className="text-lg font-semibold mb-6">{plan.credits} Credits</p>
+            <h2 className="mt-12 text-2xl font-bold mb-3">{plan.name}</h2>
+            <p className="mb-4 text-sm text-white">{plan.credits} Credits</p>
 
-            <button
-              disabled={processingPlan === plan.name}
-              onClick={() => handlePayment(plan)}
-              className={`w-full py-3 rounded-full cursor-pointer font-semibold text-lg
-                transition-colors duration-300
-                ${
-                  processingPlan === plan.name
-                    ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                    : "bg-white text-red-600 shadow-md"
-                }`}
-            >
-              {processingPlan === plan.name ? "Processing..." : "Continue"}
-            </button>
-
-            <ul className="mt-8 text-left space-y-4 w-full font-medium">
-              {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <svg
-                    className="w-6 h-6 drop-shadow"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 13l4 4L19 7" />
-                  </svg>
-                  {feature}
+            <ul className="space-y-3 mb-6 text-sm text-left w-full">
+              {[
+                "Send messages upto 10 people",
+                "View profiles",
+                "Standout from other profiles",
+              ].map((feature, i) => (
+                <li key={i} className="flex items-center">
+                  <span className={`mr-3 text-lg ${plan.features.includes(feature) ? "text-green-400" : "text-red-500"}`}>
+                    {plan.features.includes(feature) ? "✔" : "✖"}
+                  </span>
+                  <span className="text-white">{feature}</span>
                 </li>
               ))}
             </ul>
+
+            <button
+              onClick={() => handlePayment(plan)}
+              disabled={processingPlan === plan.name}
+              className="w-80 py-2 bg-white rounded-full cursor-pointer font-semibold text-black hover:bg-black hover:text-white transition-all duration-300 disabled:opacity-50"
+            >
+              {processingPlan === plan.name ? "Processing..." : "Buy Now"}
+            </button>
           </div>
         ))}
       </div>
