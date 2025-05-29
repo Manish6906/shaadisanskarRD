@@ -21,9 +21,10 @@ function Navbar3() {
 
         {/* Help Button */}
         <div>
-          <button className="bg-[#DE5353] cursor-pointer text-white px-6 py-1 jost rounded-full text-sm hover:bg-red-600 transition">
-            Help
-          </button>
+         <button className="bg-[#DE5353] text-white px-8 py-2 rounded-full text-sm cursor-pointer hover:bg-red-600 transition">
+  मदद करें
+</button>
+
         </div>
       </div>
     </div>

@@ -5,20 +5,20 @@ import { LuDot } from "react-icons/lu";
 
 const fieldSections = [
   {
-    title: "Basic & Lifestyle",
+    title: "बुनियादी और जीवनशैली",  // Basic & Lifestyle
     fields: ['age', 'religion', 'maritalstatus', 'height', 'growup', 'diet', 'community', 'healthinformation', 'disability', 'gothram']
   },
   {
-    title: "Education & Career",
-     fields: ['highestqualification']
-    // fields: ['highestqualification', 'workingwith']
+    title: "शिक्षा और करियर",  // Education & Career
+    fields: ['highestqualification']
   },
+  // आप चाहें तो नीचे स्थान और संपर्क विवरण सेक्शन भी uncomment कर सकते हैं
   // {
-  //   title: "Location",
+  //   title: "स्थान", // Location
   //   fields: ['currentresidence', 'stateofresidence', 'residencystatus', 'zippincode']
   // },
   // {
-  //   title: "My Contact Details",
+  //   title: "मेरे संपर्क विवरण", // My Contact Details
   //   fields: ['mobile', 'name', 'whatsappno', 'emailId']
   // }
 ];
@@ -57,11 +57,19 @@ function DetailFromOne() {
   const renderField = (field) => (
     <p className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3" key={field}>
       <span className="font-semibold w-full sm:w-[180px] text-sm capitalize">
-        {field === 'height' ? 'Height (in cm):' :
-          field === 'whatsappNumber' ? 'WhatsApp Number:' :
-            field === 'contactPersonName' ? 'Contact Person Name:' :
-              field === 'zipCode' ? 'ZIP Code:' :
-                field.replace(/([A-Z])/g, ' $1') + ':'}
+        {field === 'age' ? 'आयु:' :
+         field === 'religion' ? 'धर्म:' :
+         field === 'maritalstatus' ? 'वैवाहिक स्थिति:' :
+         field === 'height' ? 'ऊंचाई (सेमी में):' :
+         field === 'growup' ? 'पला बढ़ा स्थान:' :
+         field === 'diet' ? 'आहार:' :
+         field === 'community' ? 'समुदाय:' :
+         field === 'healthinformation' ? 'स्वास्थ्य जानकारी:' :
+         field === 'disability' ? 'विकलांगता:' :
+         field === 'gothram' ? 'गोत्र:' :
+         field === 'highestqualification' ? 'उच्चतम योग्यता:' :
+         field // fallback अगर कोई मेल न खाए तो फ़ील्ड का नाम जैसा है वैसा दिखाओ
+        }
       </span>
       {isEditing ? (
         field === 'religion' ? (
@@ -71,15 +79,15 @@ function DetailFromOne() {
             onChange={handleChange}
             className="border border-gray-300 px-3 py-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-red-600"
           >
-            <option value="">Select Religion</option>
-            <option value="Hindu">Hindu</option>
-            <option value="Muslim">Muslim</option>
-            <option value="Christian">Christian</option>
-            <option value="Sikh">Sikh</option>
-            <option value="Jain">Jain</option>
-            <option value="Buddhist">Buddhist</option>
-            <option value="Parsi">Parsi</option>
-            <option value="Other">Other</option>
+            <option value="">धर्म चुनें</option>
+            <option value="Hindu">हिंदू</option>
+            <option value="Muslim">मुस्लिम</option>
+            <option value="Christian">ईसाई</option>
+            <option value="Sikh">सिख</option>
+            <option value="Jain">जैन</option>
+            <option value="Buddhist">बौद्ध</option>
+            <option value="Parsi">पारसी</option>
+            <option value="Other">अन्य</option>
           </select>
         ) : (
           <input
@@ -92,7 +100,7 @@ function DetailFromOne() {
         )
       ) : (
         <span className="text-gray-700">
-          {field === 'height' && partnerData[field] ? `${partnerData[field]} cm` : partnerData[field]}
+          {field === 'height' && partnerData[field] ? `${partnerData[field]} सेमी` : partnerData[field]}
         </span>
       )}
     </p>
@@ -105,7 +113,7 @@ function DetailFromOne() {
           <div className="flex items-center gap-3">
             <LuDot className="text-4xl text-red-600" />
             <h1 className="text-red-600 text-lg md:text-xl font-bold">
-              Basic & Lifestyle, Education & Career, Location, and My Contact Details
+              बुनियादी और जीवनशैली, शिक्षा और करियर, स्थान और मेरे संपर्क विवरण
             </h1>
           </div>
           <button
@@ -113,7 +121,7 @@ function DetailFromOne() {
             className="flex items-center gap-2 mt-4 md:mt-0 cursor-pointer bg-black text-white px-4 py-1 rounded-full hover:bg-gray-800 transition"
           >
             <FaPencilAlt />
-            <span>{isEditing ? "Cancel" : "Edit"}</span>
+            <span>{isEditing ? "रद्द करें" : "संपादित करें"}</span>
           </button>
         </div>
 
@@ -133,7 +141,7 @@ function DetailFromOne() {
                 onClick={handleSave}
                 className="bg-red-600 cursor-pointer text-white px-6 py-3 rounded-lg hover:bg-red-700 transition"
               >
-                Save
+                सहेजें
               </button>
             </div>
           )}

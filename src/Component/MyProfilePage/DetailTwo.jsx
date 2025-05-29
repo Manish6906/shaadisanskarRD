@@ -15,17 +15,17 @@ function DetailTwo() {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({ ...profile });
 
-  // Fetch profile data on component mount
+  // घटक लोड होने पर प्रोफ़ाइल डेटा प्राप्त करें
   let a = JSON.parse(localStorage.getItem("userProfile"))
   let userId= a._id;
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
         const response = await axios.get(`${API}api/profileget/${userId}`);
-        setProfile(response.data.data); // Assuming response contains the necessary fields
+        setProfile(response.data.data); // मान लिया गया है कि प्रतिक्रिया में आवश्यक फ़ील्ड हैं
         setEditData(response.data.data);
       } catch (error) {
-        console.error("Error fetching profile data:", error);
+        console.error("प्रोफ़ाइल डेटा प्राप्त करने में त्रुटि:", error);
       }
     };
 
@@ -34,12 +34,12 @@ function DetailTwo() {
 
   const handleSave = async () => {
     try {
-      // Update profile data with PUT request
+      // PUT अनुरोध के साथ प्रोफ़ाइल डेटा अपडेट करें
       await axios.put(`${API}api/profileupdate/${userId}`, editData);
-      setProfile(editData); // Update local profile state
-      setIsEditing(false); // Exit editing mode
+      setProfile(editData); // स्थानीय प्रोफ़ाइल स्टेट अपडेट करें
+      setIsEditing(false); // संपादन मोड से बाहर निकलें
     } catch (error) {
-      console.error("Error updating profile data:", error);
+      console.error("प्रोफ़ाइल डेटा अपडेट करने में त्रुटि:", error);
     }
   };
 
@@ -50,7 +50,7 @@ function DetailTwo() {
           <div className='flex items-center gap-2'>
             <LuDot className='text-4xl text-red-600' />
             <h1 className='text-red-600 text-base md:text-xl font-bold'>
-              Basic & Lifestyle
+              बुनियादी और जीवनशैली
             </h1>
           </div>
           <div className='flex sm:justify-center'>
@@ -59,19 +59,19 @@ function DetailTwo() {
               className='flex items-center mt-2 md:mt-0 gap-2  w-1/3 sm:w-full bg-black cursor-pointer rounded-full text-white px-4 py-1 hover:bg-gray-800 transition'
             >
               <FaPencilAlt />
-              <span>Edit</span>
+              <span>संपादित करें</span>
             </div>
           </div>
         </div>
 
-        {/* Inner Section */}
+        {/* अंदर का अनुभाग */}
         <div className='py-3'>
           <div className='bg-white text-black p-4 rounded-md md:px-10'>
             <div className='md:flex md:justify-between md:items-start gap-10'>
-              {/* Left Column */}
+              {/* बाईं ओर का कॉलम */}
               <div className='flex flex-col space-y-3'>
                 <p className='md:flex'>
-                  <span className='font-semibold min-w-[150px]'>Grew up in:</span>
+                  <span className='font-semibold min-w-[150px]'>बचपन कहाँ बीता:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -84,7 +84,7 @@ function DetailTwo() {
                   )}
                 </p>
                 <p className='md:flex'>
-                  <span className='font-semibold min-w-[150px]'>Diet:</span>
+                  <span className='font-semibold min-w-[150px]'>आहार:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -98,10 +98,10 @@ function DetailTwo() {
                 </p>
               </div>
 
-              {/* Right Column */}
+              {/* दाईं ओर का कॉलम */}
               <div className='flex flex-col space-y-3'>
                 <p className='md:flex'>
-                  <span className='font-semibold min-w-[150px]'>Health Information:</span>
+                  <span className='font-semibold min-w-[150px]'>स्वास्थ्य जानकारी:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -114,7 +114,7 @@ function DetailTwo() {
                   )}
                 </p>
                 <p className='md:flex'>
-                  <span className='font-semibold min-w-[150px]'>Disability:</span>
+                  <span className='font-semibold min-w-[150px]'>विकलांगता:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -132,10 +132,10 @@ function DetailTwo() {
             {isEditing && (
               <div className="mt-4 flex justify-end gap-4">
                 <button onClick={() => setIsEditing(false)} className="px-4 cursor-pointer py-2 bg-gray-300 rounded">
-                  Cancel
+                  रद्द करें
                 </button>
                 <button onClick={handleSave} className="px-4 py-2 bg-[#FF5A60] cursor-pointer text-white rounded">
-                  Save
+                  सहेजें
                 </button>
               </div>
             )}
