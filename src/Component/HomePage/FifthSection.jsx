@@ -27,6 +27,7 @@ const FifthSection = () => {
         "View profiles",
         "Stand out from other profiles",
       ],
+      bgClass: "bg-gradient-to-tr from-gray-400 via-gray-600 to-gray-800 text-white",
     },
     {
       name: "Platinum",
@@ -37,6 +38,7 @@ const FifthSection = () => {
         "View profiles",
         "Stand out from other profiles",
       ],
+      bgClass: "bg-gradient-to-tr from-gray-400 via-gray-600 to-gray-800 text-white",
     },
   ];
 

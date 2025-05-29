@@ -41,7 +41,7 @@ function ThirdSection() {
             className="flex flex-col items-center text-center "
           >
             {/* Arch container */}
-            <div className="w-48 h-64 md:w-56 md:h-72 lg:w-72 lg:h-96 p-2 bg-white rounded-t-full shadow-md overflow-hidden flex items-end justify-center">
+            <div className="w-48 h-64 md:w-56 md:h-72 lg:w-72 lg:h-96 p-2 hover:scale-90 cursor-pointer transition duration-200 bg-white rounded-t-full shadow-md overflow-hidden flex items-end justify-center">
               <img
                 src={member.image}
                 alt={member.name}
