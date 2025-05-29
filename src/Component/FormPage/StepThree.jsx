@@ -2,7 +2,7 @@
   import axios from 'axios';
   import Image18 from '../../assets/Images/Image18.png';
   import { FaArrowCircleLeft, FaChevronDown } from "react-icons/fa";
-  import { useNavigate } from 'react-router-dom';
+  import { Link, useNavigate } from 'react-router-dom';
   import { ToastContainer, toast } from 'react-toastify';
 
   function StepThree() {
@@ -125,9 +125,11 @@ const handleChange = (e) => {
           <div className="w-full md:flex-1 space-y-6">
             <form className="space-y-4" onSubmit={handleSubmit}>
               <ToastContainer />
-              <button type="button" className="flex items-center text-[#824A23]">
+             <Link to="/">
+               <button type="button" className="flex items-center cursor-pointer text-[#824A23]">
                 <FaArrowCircleLeft className="mr-4 text-2xl" />
               </button>
+             </Link>
 
               <h2 className="text-2xl text-center font-semibold gilda-display-regular">Create your profile now!</h2>
 
@@ -204,7 +206,7 @@ const handleChange = (e) => {
     <option value="Divorced">Divorced</option>
     <option value="Widowed">Widowed</option>
   </select>
-  <FaChevronDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+  <FaChevronDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"   />
 </div>
 
               {/* Diet */}
@@ -247,7 +249,7 @@ const handleChange = (e) => {
               </div>
 
               {/* Sub-community */}
-              <div className="relative">
+              {/* <div className="relative">
                 <select
                   name="subCommunity"
                   value={formData.subCommunity}
@@ -266,7 +268,7 @@ const handleChange = (e) => {
                   ))}
                 </select>
                 <FaChevronDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
-              </div>
+              </div> */}
 
               {/* Submit */}
               <div className="flex justify-center">

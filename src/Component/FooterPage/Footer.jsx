@@ -109,7 +109,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-3 text-[10px] sm:text-[15px] lg:text-[17px]">
-        <ul className="flex sm:justify-center items-center gap-1">
+        <ul className="flex justify-center items-center gap-1">
           <li className="border-r-2 border-white px-2"><Link to="/privacy">Privacy Policy</Link></li>
           <li className="border-r-2 border-white px-2"><Link to="/termandcondition">TermAnd Condition</Link></li>
           <li className="px-2"><Link to="/refund">Cancel Refund</Link></li>

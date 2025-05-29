@@ -32,7 +32,7 @@ function Navbar() {
         {/* {/ Logo /} */}
         <div>
           <Link to="/">
-            <img src={Logo2} alt="Logo2" className="h-20 w-30" />
+            <img src={Logo2} alt="Logo2" className="h-25 w-40" />
           </Link>
         </div>
 
@@ -79,7 +79,7 @@ function Navbar() {
         {/* {/ Register Button (Desktop) /} */}
         <div className="hidden md:block jost">
           <NavLink to="/register/step-one">
-            <button className="bg-[#C34040] cursor-pointer hover:bg-black text-white px-5 py-2 rounded-full ">
+            <button className="bg-[#02BED0] cursor-pointer hover:bg-black text-white px-5 py-2 rounded-full ">
               Register Now
             </button>
           </NavLink>

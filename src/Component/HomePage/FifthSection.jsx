@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 const FifthSection = () => {
-  let API = import.meta.env.VITE_APP_API_URL;
+  const API = import.meta.env.VITE_APP_API_URL;
   const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID;
   const navigate = useNavigate();
 
@@ -23,20 +23,22 @@ const FifthSection = () => {
       price: 299,
       credits: 30,
       features: [
-        "Send messages upto 30 people",
+        "Send messages up to 30 people",
         "View profiles",
-        "Standout from other profiles",
+        "Stand out from other profiles",
       ],
+      bgClass: "bg-gradient-to-tr from-gray-400 via-gray-600 to-gray-800 text-white",
     },
     {
       name: "Platinum",
       price: 599,
       credits: 100,
       features: [
-        "Send messages upto 100 people",
+        "Send messages up to 100 people",
         "View profiles",
-        "Standout from other profiles",
+        "Stand out from other profiles",
       ],
+      bgClass: "bg-gradient-to-tr from-gray-400 via-gray-600 to-gray-800 text-white",
     },
   ];
 
@@ -87,9 +89,7 @@ const FifthSection = () => {
           email: user.emailId,
           contact: user.mobileNumber,
         },
-        theme: {
-          color: "#EB5757",
-        },
+        theme: { color: "#EB5757" },
       };
 
       const rzp = new window.Razorpay(options);
@@ -105,7 +105,7 @@ const FifthSection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-200 py-16 px-6 relative overflow-hidden">
+    <div className=" bg-pink-50 py-16 px-6 relative overflow-hidden">
       <ToastContainer />
       
       {/* Optional Decorative Circles */}
@@ -151,7 +151,7 @@ const FifthSection = () => {
             <button
               onClick={() => handlePayment(plan)}
               disabled={processingPlan === plan.name}
-              className="w-80 py-2 bg-red-300 rounded-full font-semibold text-white hover:bg-black transition-all duration-300 disabled:opacity-50"
+              className="w-80 py-2 bg-white rounded-full cursor-pointer font-semibold text-black hover:bg-black hover:text-white transition-all duration-300 disabled:opacity-50"
             >
               {processingPlan === plan.name ? "Processing..." : "Buy Now"}
             </button>
@@ -163,3 +163,4 @@ const FifthSection = () => {
 };
 
 export default FifthSection;
+
