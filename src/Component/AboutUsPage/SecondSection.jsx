@@ -13,26 +13,28 @@ function SecondSection() {
       {/* Text Section */}
       <div className="lg:w-1/2 text-left">
         <h1 className="text-4xl font-semibold mb-4 gilda-display-regular">
-          Love isn't just about finding someone{" "}
+          प्यार सिर्फ किसी को पाने का नाम नहीं है{" "}
           <span className="text-[#EB5757]">
             {" "}
-            — it's about finding the right someone.
+            — बल्कि सही व्यक्ति को पाने का नाम है।
           </span>
         </h1>
         <p className="text-lg leading-relaxed break-words jost">
-          At Shaadi Sanskar, we go beyond algorithms and swipes. We believe in
-          meaningful matches, soulful conversations, and lasting connections.
-          Whether you're someone who believes in fairy-tale endings or just
-          looking for someone to share everyday moments with — you're in the
-          right place.
+          Shaadi Sanskar में हम केवल एल्गोरिद्म और स्वाइप से आगे बढ़ते हैं।
+हम अर्थपूर्ण मेल-जोल, दिल से होने वाली बातचीत और जीवनभर चलने वाले रिश्तों में विश्वास करते हैं।
+चाहे आप किसी परीकथा जैसी प्रेम कहानी में विश्वास रखते हों या बस किसी ऐसे साथी की तलाश में हों जो रोज़मर्रा की खुशियों में साथ दे — आप बिल्कुल सही जगह पर हैं।
         </p>
         <p className="text-lg leading-relaxed break-words jost">
-          Our journey began with a simple idea: to create a platform where real
-          people find real love. With a blend of technology, intuition, and a whole lot of heart, we've helped countless individuals find their life
-          partners — and we're just getting started.Every profile on Shaadi Sanskar is handpicked, verified, and part of a
-          safe, respectful environment where you can truly be yourself. Our
-          advanced matchmaking system is designed to understand not just who you
-          are, but what your heart seeks.Let your story begin with us.
+         हमारी यात्रा एक सरल सोच से शुरू हुई:
+ऐसा प्लेटफॉर्म बनाना जहां असली लोग असली प्यार खोजें।
+तकनीक, समझ और दिल की भावनाओं का सुंदर संगम बनाकर, हमने अनगिनत लोगों को उनका जीवनसाथी ढूंढने में मदद की है — और यह तो बस शुरुआत है।
+        </p>
+        <p className="text-lg leading-relaxed break-words jost">
+          Shaadi Sanskar पर हर प्रोफाइल को ध्यान से चुना जाता है, सत्यापित किया जाता है, और एक सुरक्षित, सम्मानजनक वातावरण का हिस्सा बनाया जाता है — जहां आप अपने सच्चे रूप में सामने आ सकते हैं।
+हमारी उन्नत मैचमेकिंग प्रणाली सिर्फ ये नहीं देखती कि आप कौन हैं, बल्कि यह भी समझने की कोशिश करती है कि आपका दिल किसकी तलाश में है।क्योंकि हम जानते हैं, प्यार कोई लेन-देन नहीं, बल्कि एक जुड़ाव है।
+और Shaadi Sanskar में, हमारा मकसद है — उस जुड़ाव को हकीकत बनाना।
+
+अपनी प्रेम कहानी की शुरुआत हमसे करें।
         </p>
     
       </div>

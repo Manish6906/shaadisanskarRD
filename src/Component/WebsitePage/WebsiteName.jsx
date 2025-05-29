@@ -11,27 +11,27 @@ import { FaCheckSquare } from "react-icons/fa";
 const features = [
   {
     icon: <span className="text-2xl  text-[#DC8800] sm:text-3xl"><FaStar /></span>,
-    title: "A New Era of Matchmaking",
+    title: "मैचमेकिंग का नया युग",
     description:
-      "Modern matchmaking designed for serious relationships and meaningful connections.",
+      "आधुनिक सोच के साथ बना प्लेटफॉर्म — गंभीर रिश्तों और सच्चे जुड़ाव के लिए।",
   },
   {
     icon: <span className="text-2xl text-[#FF0000] sm:text-3xl"><FaHeart /></span>,
-    title: "Find Your Perfect Match",
+    title: "अपना परफेक्ट मैच पाएं",
     description:
-      "Advanced algorithms and personalized recommendations to help you connect with like-minded individuals.",
+      "उन्नत एल्गोरिद्म और व्यक्तिगत सुझाव जो आपको समान सोच वाले लोगों से जोड़ते हैं।",
   },
   {
     icon: <span className="text-xl text-[#53321B] sm:text-2xl"><FaLock /></span>,
-    title: "Your Privacy, Our Priority",
+    title: "आपकी प्राइवेसी, हमारी प्राथमिकता",
     description:
-      "Full control over your profile, photos, and conversations—your data stays secure.",
+      "प्रोफाइल, फोटो और बातचीत पर पूरा नियंत्रण — आपका डेटा पूरी तरह सुरक्षित।",
   },
   {
     icon: <span className="text-xl text-[#379D00] sm:text-2xl"><FaCheckSquare /></span>,
-    title: "Verified & Secure",
+    title: "वेरिफाइड और सुरक्षित अनुभव",
     description:
-      "AI-powered verification and strict security measures to ensure a genuine matchmaking experience.",
+      "AI द्वारा सत्यापन और सख्त सुरक्षा उपाय — ताकि आपको मिल सके एक असली, भरोसेमंद मैचमेकिंग अनुभव।",
   },
 ];
 
@@ -39,7 +39,7 @@ function WebsiteName() {
   return (
     <div className="bg-[#DE5353] text-white py-2 px-4 jost  sm:px-6 md:px-10 text-center">
       <h2 className="text-xl sm:text-2xl md:text-3xl mt-6 font-semibold mb-1">
-        Why Register on Shaadi Sanskar?
+       Shaadi Sanskar पर रजिस्टर क्यों करें?
       </h2>
       <div className="w-20 sm:w-28 h-1 bg-white mx-auto mb-4"></div>
 
