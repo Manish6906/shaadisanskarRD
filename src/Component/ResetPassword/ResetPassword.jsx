@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 
 const ResetPassword = () => {
-let API= import.meta.env.VITE_APP_API_URL
+  let API = import.meta.env.VITE_APP_API_URL;
   const navigate = useNavigate();
 
   const [password, setPassword] = useState("");
@@ -22,7 +22,7 @@ let API= import.meta.env.VITE_APP_API_URL
     if (resetToken) {
       setToken(resetToken);
     } else {
-      setMessage("Invalid reset link.");
+      setMessage("रीसेट लिंक अमान्य है।");
     }
   }, []);
 
@@ -30,10 +30,10 @@ let API= import.meta.env.VITE_APP_API_URL
     e.preventDefault();
 
     if (!password || !confirmPassword) {
-      return setMessage("Please enter a new password.");
+      return setMessage("कृपया नया पासवर्ड दर्ज करें।");
     }
     if (password !== confirmPassword) {
-      return setMessage("Passwords do not match.");
+      return setMessage("पासवर्ड मेल नहीं खाते।");
     }
 
     setLoading(true);
@@ -51,15 +51,15 @@ let API= import.meta.env.VITE_APP_API_URL
 
       const data = await response.json();
       if (response.ok) {
-        setMessage(data.message);
+        setMessage(data.message || "पासवर्ड सफलतापूर्वक रीसेट हो गया।");
         setTimeout(() => {
           navigate("/login");
         }, 2000);
       } else {
-        setMessage(data.message || "Failed to reset password.");
+        setMessage(data.message || "पासवर्ड रीसेट करने में विफल।");
       }
     } catch (error) {
-      setMessage("Something went wrong.");
+      setMessage("कुछ गलत हो गया।");
     }
     setLoading(false);
   };
@@ -68,17 +68,17 @@ let API= import.meta.env.VITE_APP_API_URL
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
-          Reset Password
+          पासवर्ड रीसेट करें
         </h2>
         {message && (
           <p className="text-center text-sm text-green-600 mb-4">{message}</p>
         )}
         <form onSubmit={handleResetPassword} className="space-y-4">
-          {/* Password Field */}
+          {/* नया पासवर्ड */}
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="New Password"
+              placeholder="नया पासवर्ड"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none "
@@ -92,11 +92,11 @@ let API= import.meta.env.VITE_APP_API_URL
             </div>
           </div>
 
-          {/* Confirm Password Field */}
+          {/* पासवर्ड की पुष्टि करें */}
           <div className="relative">
             <input
               type={showConfirm ? "text" : "password"}
-              placeholder="Confirm Password"
+              placeholder="पासवर्ड की पुष्टि करें"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none "
@@ -115,7 +115,7 @@ let API= import.meta.env.VITE_APP_API_URL
             disabled={loading}
             className="w-full bg-[#EB5757] hover:opacity-90 cursor-pointer text-white font-semibold py-2.5 rounded-lg transition duration-300 shadow-md"
           >
-            {loading ? "Resetting..." : "Reset Password"}
+            {loading ? "रीसेट किया जा रहा है..." : "पासवर्ड रीसेट करें"}
           </button>
         </form>
       </div>

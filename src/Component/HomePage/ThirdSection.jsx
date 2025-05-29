@@ -45,7 +45,7 @@ function ThirdSection() {
               <img
                 src={member.image}
                 alt={member.name}
-                className="h-full w-full object-cover rounded-t-full"
+                className="h-full w-full object-cover rounded-t-full blur-md"
               />
             </div>
             <div className="mt-4 w-48 md:w-56">

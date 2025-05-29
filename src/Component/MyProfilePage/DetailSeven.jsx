@@ -4,37 +4,37 @@ import { LuDot } from "react-icons/lu";
 import axios from 'axios';
 
 function DetailSeven() {
-  let API= import.meta.env.VITE_APP_API_URL
+  let API = import.meta.env.VITE_APP_API_URL;
   const [hobbies, setHobbies] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [editHobbies, setEditHobbies] = useState(hobbies);
 
-  // Fetch hobbies on component mount
+  // जब कंपोनेंट लोड हो तब शौक की जानकारी प्राप्त करें
   useEffect(() => {
     const userProfile = JSON.parse(localStorage.getItem("userProfile"));
     const userId = userProfile?._id;
-    axios.get(`${API}api/profileget/${userId}`) // Replace with your API endpoint
+    axios.get(`${API}api/profileget/${userId}`)
       .then(response => {
         const fetchedHobbies = response.data.data?.hobbies || '';
-        setHobbies(fetchedHobbies); // Ensure hobbies is a string
-        setEditHobbies(fetchedHobbies); // Initialize editHobbies with fetched data
+        setHobbies(fetchedHobbies);
+        setEditHobbies(fetchedHobbies);
       })
       .catch(error => {
-        console.error('Error fetching hobbies:', error);
+        console.error('शौक लोड करने में त्रुटि:', error);
       });
   }, []);
 
-  // Handle save (update the hobbies)
+  // सेव बटन पर क्लिक करने पर शौक अपडेट करें
   const handleSave = () => {
     const userProfile = JSON.parse(localStorage.getItem("userProfile"));
     const userId = userProfile?._id;
-    axios.put(`${API}api/profileupdate/${userId}`, { hobbies: editHobbies }) // Replace with your API endpoint
+    axios.put(`${API}api/profileupdate/${userId}`, { hobbies: editHobbies })
       .then(response => {
-        setHobbies(editHobbies); // Update the displayed hobbies with the edited data
-        setIsEditing(false); // Switch back to view mode
+        setHobbies(editHobbies);
+        setIsEditing(false);
       })
       .catch(error => {
-        console.error('Error saving hobbies:', error);
+        console.error('शौक सेव करने में त्रुटि:', error);
       });
   };
 
@@ -45,7 +45,7 @@ function DetailSeven() {
           <div className='flex items-center gap-2'>
             <LuDot className='text-4xl text-red-600' />
             <h1 className='text-red-600 text-base md:text-xl font-bold'>
-              Hobbies
+              शौक
             </h1>
           </div>
           <div className='flex sm:justify-center'>
@@ -55,16 +55,16 @@ function DetailSeven() {
                 className='flex items-center w-1/3 sm:w-full mt-2 md:mt-0 gap-2 bg-black rounded-full text-white px-4 py-1 cursor-pointer hover:bg-gray-800 transition'
               >
                 <FaPencilAlt />
-                <span>Edit</span>
+                <span>संपादित करें</span>
               </div>
             )}
           </div>
         </div>
 
-        {/* Inner Section */}
+        {/* अंदर का सेक्शन */}
         <div className='py-3'>
           <div className='bg-white text-black p-4 rounded-md md:px-10'>
-            {/* Hobbies Section */}
+            {/* शौक सेक्शन */}
             <div className=''>
               {isEditing ? (
                 <div className="flex flex-col">
@@ -73,32 +73,31 @@ function DetailSeven() {
                     className="border p-2 rounded-md"
                     value={editHobbies}
                     onChange={(e) => setEditHobbies(e.target.value.toUpperCase())}
-                    placeholder="e.g., Photography, Gaming, Hiking"
+                    placeholder="जैसे: फोटोग्राफी, गेमिंग, हाइकिंग"
                   />
                   <div className="flex justify-end gap-4 mt-4">
                     <button
                       onClick={() => setIsEditing(false)}
                       className="px-4 py-2 cursor-pointer bg-gray-300 rounded"
                     >
-                      Cancel
+                      रद्द करें
                     </button>
                     <button
                       onClick={handleSave}
                       className="px-4 py-2 cursor-pointer bg-[#FF5A60] text-white rounded"
                     >
-                      Save
+                      सेव करें
                     </button>
                   </div>
                 </div>
               ) : (
                 <div className='flex flex-wrap pl-6 gap-2'>
-  {(typeof hobbies === 'string' ? hobbies.split(",") : []).map((hobby, index) => (
-    <span className='bg-rose-200 px-3 py-1 rounded-md' key={index}>
-      {hobby.trim().toUpperCase()}
-    </span>
-  ))}
-</div>
-
+                  {(typeof hobbies === 'string' ? hobbies.split(",") : []).map((hobby, index) => (
+                    <span className='bg-rose-200 px-3 py-1 rounded-md' key={index}>
+                      {hobby.trim().toUpperCase()}
+                    </span>
+                  ))}
+                </div>
               )}
             </div>
           </div>

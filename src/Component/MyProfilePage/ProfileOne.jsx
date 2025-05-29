@@ -115,59 +115,57 @@ function ProfileOne() {
           alt="Profile"
           className="w-full h-full object-cover rounded-full "
         />
-        {/* <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white rounded-full p-1 cursor-pointer">
-          <MdPhotoCamera className="text-lg sm:text-xl" />
-        </div> */}
         {editMode && (
-  <div className="w-full flex flex-col items-center">
-  <input
-    type="file"
-    id="file-upload"
-    style={{ display: 'none' }}
-    onChange={(e) => {
-      const file = e.target.files[0];
-      setImage(file);
-      if (file) {
-        setPreviewUrl(URL.createObjectURL(file));
-      }
-    }}
-  />
-  <label htmlFor="file-upload" className="w-40 max-w-xs">
-    <div className="w-full text-center px-4 py-2 bg-red-800 text-white rounded hover:bg-black cursor-pointer mt-2 text-sm sm:text-base">
-      Upload File
-    </div>
-  </label>
-</div>
-)}
-</div>
+          <div className="w-full flex flex-col items-center">
+            <input
+              type="file"
+              id="file-upload"
+              style={{ display: 'none' }}
+              onChange={(e) => {
+                const file = e.target.files[0];
+                setImage(file);
+                if (file) {
+                  setPreviewUrl(URL.createObjectURL(file));
+                }
+              }}
+            />
+            <label htmlFor="file-upload" className="w-40 max-w-xs">
+              <div className="w-full text-center px-4 py-2 bg-red-800 text-white rounded hover:bg-black cursor-pointer mt-2 text-sm sm:text-base">
+                फ़ाइल अपलोड करें
+              </div>
+            </label>
+          </div>
+        )}
+      </div>
+
       {/* User Info */}
       <div className="bg-[#FFE2CE] px-4 sm:px-6 py-6 sm:py-8 rounded-xl shadow-lg space-y-4">
-        {/* Name */} 
+        {/* Name */}
         <div className="flex sm:flex-row sm:items-center justify-between gap-2">
           <div className="w-full sm:w-auto">
             {editMode ? (
               <>
-                <label className="text-lg font-medium text-gray-700 mr-2">Name:</label>
+                <label className="text-lg font-medium text-gray-700 mr-2">नाम:</label>
                 <div className="flex flex-col gap-2">
                   <input
                     type="text"
                     className="w-full sm:w-52 text-lg font-semibold text-black h-10 px-3 rounded border border-gray-400"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    placeholder="First Name"
+                    placeholder="पहला नाम"
                   />
                   <input
                     type="text"
                     className="w-full sm:w-52 text-lg font-semibold text-black h-10 px-3 rounded border border-gray-400"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Last Name"
+                    placeholder="अंतिम नाम"
                   />
                 </div>
               </>
             ) : (
               <div>
-                <label className="text-md font-semibold text-black mr-2">Name:</label>
+                <label className="text-md font-semibold text-black mr-2">नाम:</label>
                 <div className="flex gap-2">
                   {firstName && (
                     <h1 className="text-xl font-semibold text-gray-600">
@@ -188,7 +186,7 @@ function ProfileOne() {
             onClick={() => (editMode ? handleSave() : setEditMode(true))}
           >
             <MdEdit className="text-lg" />
-            {editMode ? 'Save' : 'Edit'}
+            {editMode ? 'सहेजें' : 'संपादित करें'}
           </button>
         </div>
 
@@ -197,7 +195,7 @@ function ProfileOne() {
         {/* Phone Number */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="w-full ">
-            <h2 className="text-sm font-semibold text-black">Phone Number:</h2>
+            <h2 className="text-sm font-semibold text-black">फ़ोन नंबर:</h2>
             {editMode ? (
               <input
                 type="text"
@@ -216,7 +214,7 @@ function ProfileOne() {
         {/* Email ID */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="w-full ">
-            <h2 className="text-sm font-semibold text-black">Email ID:</h2>
+            <h2 className="text-sm font-semibold text-black">ईमेल आईडी:</h2>
             {editMode ? (
               <input
                 type="email"
@@ -234,48 +232,45 @@ function ProfileOne() {
 
         {/* DOB & Gender */}
         <div className="flex  sm:flex-row sm:items-center justify-between gap-4">
-  {/* Date of Birth */}
-  <div className="w-full sm:w-1/2">
-    <h2 className="text-sm font-semibold text-black">Date of Birth:</h2>
-    {editMode ? (
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        className="w-full text-sm text-gray-800 h-10 px-3 rounded border border-gray-400"
-      />
-    ) : (
-      <span className="text-sm text-gray-600">
-        {date ? formatDisplayDate(date) : "Not set"}
-      </span>
-    )}
-  </div>
+          {/* Date of Birth */}
+          <div className="w-full sm:w-1/2">
+            <h2 className="text-sm font-semibold text-black">जन्म तिथि:</h2>
+            {editMode ? (
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="w-full text-sm text-gray-800 h-10 px-3 rounded border border-gray-400"
+              />
+            ) : (
+              <span className="text-sm text-gray-600">
+                {date ? formatDisplayDate(date) : "सेट नहीं किया गया"}
+              </span>
+            )}
+          </div>
 
-  {/* Gender */}
-  <div className="w-full sm:w-1/2">
-    <h2 className="text-sm font-semibold text-black">Gender:</h2>
-    {editMode ? (
-      <select
-        value={gender}
-        onChange={(e) => setGender(e.target.value)}
-        className="w-full text-sm text-gray-800 h-10 px-3 rounded border border-gray-400"
-      >
-        <option value="">Select</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-      </select>
-    ) : (
-      <span className="text-sm text-gray-600">{gender || "Not set"}</span>
-    )}
-  </div>
-</div>
-
+          {/* Gender */}
+          <div className="w-full sm:w-1/2">
+            <h2 className="text-sm font-semibold text-black">लिंग:</h2>
+            {editMode ? (
+              <select
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                className="w-full text-sm text-gray-800 h-10 px-3 rounded border border-gray-400"
+              >
+                <option value="">चुनें</option>
+                <option value="Male">पुरुष</option>
+                <option value="Female">महिला</option>
+                <option value="Other">अन्य</option>
+              </select>
+            ) : (
+              <span className="text-sm text-gray-600">{gender || "सेट नहीं किया गया"}</span>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
 export default ProfileOne;
-
-

@@ -4,21 +4,20 @@ import { FaPencilAlt } from "react-icons/fa";
 import { LuDot } from "react-icons/lu";
 
 function DetailOne() {
-  let API= import.meta.env.VITE_APP_API_URL
+  let API = import.meta.env.VITE_APP_API_URL;
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState('');
-  const a = JSON.parse(localStorage.getItem('userProfile')) // Assuming the userId is stored in localStorage
-  const userId = a._id
+  const a = JSON.parse(localStorage.getItem('userProfile')); // मान लिया गया है कि उपयोगकर्ता ID localStorage में संग्रहित है
+  const userId = a._id;
+
   useEffect(() => {
-    // Fetch user profile data on component mount
+    // घटक लोड होने पर उपयोगकर्ता प्रोफ़ाइल डेटा प्राप्त करें
     const fetchProfileData = async () => {
       try {
         const response = await axios.get(`${API}api/profileget/${userId}`);
-        // console.log(response.data.data.familydetail);
-        
-        setEditContent(response.data.data.familydetail || 'No details available.');
+        setEditContent(response.data.data.familydetail || 'कोई विवरण उपलब्ध नहीं है।');
       } catch (error) {
-        console.error("Error fetching profile data:", error);
+        console.error("प्रोफ़ाइल डेटा प्राप्त करने में त्रुटि:", error);
       }
     };
 
@@ -27,13 +26,13 @@ function DetailOne() {
 
   const handleSave = async () => {
     try {
-      // Send the updated content to the backend
+      // अद्यतन सामग्री को बैकएंड पर भेजें
       await axios.put(`${API}api/profileupdate/${userId}`, {
         familydetail: editContent,
       });
       setIsEditing(false);
     } catch (error) {
-      console.error("Error updating profile data:", error);
+      console.error("प्रोफ़ाइल डेटा अपडेट करने में त्रुटि:", error);
     }
   };
 
@@ -44,7 +43,7 @@ function DetailOne() {
           <div className='flex items-center gap-2'>
             <LuDot className='text-4xl text-red-600' />
             <h1 className='text-red-600 text-base md:text-xl font-bold'>
-              Personality, Family Details, Career, Partner Expectations, etc.
+              व्यक्तित्व, पारिवारिक विवरण, करियर, साथी की अपेक्षाएँ आदि।
             </h1>
           </div>
 
@@ -55,7 +54,7 @@ function DetailOne() {
                 className='flex items-center gap-2 mt-2 w-1/3 sm:w-full cursor-pointer md:mt-0 bg-black rounded-full text-white px-4 md:px-6 py-1 hover:bg-gray-800 transition'
               >
                 <FaPencilAlt />
-                Edit
+                संपादित करें
               </div>
             </div>
           )}
@@ -76,18 +75,18 @@ function DetailOne() {
                     onClick={() => setIsEditing(false)}
                     className="px-4 py-2 bg-gray-300 rounded cursor-pointer hover:bg-gray-400"
                   >
-                    Cancel
+                    रद्द करें
                   </button>
                   <button
                     onClick={handleSave}
                     className="px-4 py-2 bg-red-600 cursor-pointer text-white rounded hover:bg-red-700"
                   >
-                    Save
+                    सहेजें
                   </button>
                 </div>
               </>
             ) : (
-              <p>{editContent || "No details added yet."}</p>
+              <p>{editContent || "अभी तक कोई विवरण जोड़ा नहीं गया है।"}</p>
             )}
           </div>
         </div>

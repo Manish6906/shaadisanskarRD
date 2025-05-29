@@ -31,14 +31,15 @@ function ProfilePage() {
         <Navbar4 />
         <ErrorBoundary>
         <ProfileFull />
-        <div className="md:flex items-center gap-3 p-4 md:px-7">
-          <button className="bg-red-600 text-white px-5 py-1 cursor-pointer rounded-full">
-            About Myself
-          </button>
-        </div>
-        <p className="text-center text-red-500 text-sm mb-3 font-medium mt-2 animate-pulse">
-          Please fill in all the details if not already filled.
-        </p>
+       <div className="md:flex items-center gap-3 p-4 md:px-7">
+  <button className="bg-red-600 text-white px-5 py-1 cursor-pointer rounded-full">
+    अपने बारे में
+  </button>
+</div>
+<p className="text-center text-red-500 text-sm mb-3 font-medium mt-2 animate-pulse">
+  कृपया सभी विवरण भरें यदि पहले से नहीं भरे गए हैं।
+</p>
+
 
         <DetailOne />
         <DetailTwo />
@@ -48,18 +49,20 @@ function ProfilePage() {
         <DetailSix />
         <DetailSeven />
         <div className="md:flex gap-3 p-4 md:px-7">
-          <button className="bg-red-600 text-white px-5 py-1 cursor-pointer rounded-full">
-            Partner Preferences
-          </button>
-        </div>
+  <button className="bg-red-600 text-white px-5 py-1 cursor-pointer rounded-full">
+    साथी की पसंद
+  </button>
+</div>
+
         <DetailFromOne />
         <div className="md:flex gap-3 p-4 md:px-7">
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="bg-[#FFE7D6] text-black font-bold px-5 py-1 cursor-pointer rounded-full"
-          >
-            Back To Top
-          </button>
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+  className="bg-[#FFE7D6] text-black font-bold px-5 py-1 cursor-pointer rounded-full"
+>
+  ऊपर जाएं
+</button>
+
         </div>
         </ErrorBoundary>
         <Footer />
