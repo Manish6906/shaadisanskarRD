@@ -44,6 +44,7 @@ import PrivacyAndPolicyPage from "./Pages/PrivacyAndPolicyPage";
 import CancelAndRefundPage from "./Pages/CancelAndRefundPage";
 
 
+
 function App() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -141,7 +142,7 @@ function App() {
         
       </Routes>
      
-    
+   
 
 
     </>

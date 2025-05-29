@@ -35,7 +35,7 @@ function SecondSection() {
   const groupedStories = groupStories(stories, isMdUp ? 2 : 1);
 
   return (
-    <section className="relative px-4 py-16 overflow-hidden bg-gray-100">
+    <section className="relative px-4 py-16 overflow-hidden bg-pink-50 ">
       <h1 className="text-5xl font-serif text-center font-bold mb-20">
         <span className="text-black">Success </span>
         <span className="text-rose-600 italic">Stories</span>

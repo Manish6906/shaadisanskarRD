@@ -5,7 +5,7 @@ import smallflower1 from "../../assets/Images/jnbdjb 2.png";
 
 const OurStoriesSection = () => {
   return (
-    <div className="relative bg-white py-20 px-4 sm:px-8 lg:px-20 overflow-hidden font-jost">
+    <div className="relative bg-pink-50 py-20 px-4 sm:px-8 lg:px-20 overflow-hidden font-jost">
       {/* Floral corners - enlarged */}
       <img
         src={smallflower}
@@ -39,11 +39,11 @@ const OurStoriesSection = () => {
         </div>
 
         {/* Image - slightly overlapped */}
-        <div className="w-[90%] sm:w-[320px] h-[400px] -ml-10 md:-ml-16 mt-[-20px] md:mt-0 overflow-hidden rounded-[45%] shadow-2xl border-4 border-white -rotate-[4deg] transition-transform duration-500 hover:scale-105 z-0">
+        <div className="w-[90%] sm:w-[320px] h-[400px] p-2 -ml-10 md:-ml-16 mt-[-20px] md:mt-0 overflow-hidden rounded-[45%] shadow-2xl border-4 border-white -rotate-[4deg] transition-transform duration-500 hover:scale-105 z-0">
           <img
             src={girl1}
             alt="Couple"
-            className="w-full h-full object-cover"
+            className="w-full h-full rounded-full object-cover"
           />
         </div>
       </div>
