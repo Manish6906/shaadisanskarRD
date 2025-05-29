@@ -1,44 +1,44 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import CoupleImage from '../../assets/Images/arto-suraj-QXEITcoqkOU-unsplash.jpg';
+import theme from '../../assets/Images/theme.png'; // Background mandap image
+import couples from '../../assets/Images/couples.png'; // Ce
+import group367 from '../../assets/Images/Group 367.png';
+import bgImage from '../../assets/Images/Group 369.png';
+
 
 function FirstSection() {
-  const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-
-  const handleStart = () => {
-    navigate(token ? "/allprofile" : "/login");
-  };
-
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden">
+    <div
+      className="relative w-full  bg-cover bg-center"
+     
+    >
+      {/* Overlay for darker contrast if needed */}
+      <div className="absolute inset-0 bg-black/20 z-0" />
+<img src={bgImage}  />
 
-      {/* Background image with overlay */}
-      <div className="absolute inset-0">
-        <img
-          src={CoupleImage}
-          alt="Wedding Couple"
-          className="w-full h-full object-cover opacity-100 "
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
-      </div>
+      {/* Bottom content box */}
+      <div className="absolute bottom-0 w-full z-20">
+        <div className="  px-6 sm:px-10 pt-10 pb-2 lg:pb-8 text-center shadow-xl">
 
-      {/* Bottom-right content with glass effect */}
-      <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 max-w-sm sm:max-w-md md:max-w-lg px-4 py-6 sm:px-6 sm:py-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl z-10">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-snug">
-          Begin Your Beautiful <span className="text-pink-400">Forever</span>
-        </h1>
-        <p className="mt-3 text-sm sm:text-base text-gray-200">
-          India’s most trusted platform for meaningful, serious, and cultural connections that last a lifetime.
-        </p>
-        <button
-          onClick={handleStart}
-          className="mt-5 px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full font-semibold shadow-lg transition"
-        >
-          Find Your Match
-        </button>
+
+          {/* Heading */}
+          <h2 className="text-[8px] md:text-[20px] lg:text-2xl xl:text-4xl xl:mb-9 font-semibold gilda-display text-gray-800">
+            <span className="italic font-semibold text-gray-900">
+              Royal matches made with Tradition and Love
+            </span>
+          </h2>
+
+          {/* Description */}
+          <p className="text-[5px] sm:text-base md:text-[10px] lg:text-[15px] xl:text-2xl xl:mb-4 text-gray-600 mt-1 max-w-2xl mx-auto jost font-light">
+            Indian most Trusted Matrimonial platform for meaningful, cultural, and lifelong connection.
+          </p>
+
+          {/* Button */}
+          <button className="mt-2 px-2 py-1 md:px-6 md:py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-full shadow-md transition text-[5px] sm:text-base">
+            Start Your Journey
+          </button>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
 

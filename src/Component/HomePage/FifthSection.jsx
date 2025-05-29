@@ -89,9 +89,7 @@ const FifthSection = () => {
           email: user.emailId,
           contact: user.mobileNumber,
         },
-        theme: {
-          color: "#EB5757",
-        },
+        theme: { color: "#EB5757" },
       };
 
       const rzp = new window.Razorpay(options);
@@ -107,7 +105,7 @@ const FifthSection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pink-50 py-16 px-6 relative overflow-hidden">
+    <div className=" bg-pink-50 py-16 px-6 relative overflow-hidden">
       <ToastContainer />
       
       {/* Optional Decorative Circles */}
@@ -165,3 +163,4 @@ const FifthSection = () => {
 };
 
 export default FifthSection;
+
