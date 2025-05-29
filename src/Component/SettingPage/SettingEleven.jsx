@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function SettingEleven() {
-  const [isHidden, setIsHidden] = useState(false); // false means profile is visible
+  const [isHidden, setIsHidden] = useState(false); // false का मतलब प्रोफ़ाइल दिख रही है
 
   const handleToggleHide = () => {
     setIsHidden((prev) => !prev);
@@ -12,49 +12,49 @@ function SettingEleven() {
     <div className="px-4 py-10 jost bg-[#FFCCA8] flex items-center justify-center">
       <div className="w-full space-y-8">
 
-        {/* Main Title */}
+        {/* मुख्य शीर्षक */}
         <h1 className="text-2xl font-bold text-black">
-          Delete Profile
+          प्रोफ़ाइल हटाएं
         </h1>
 
-        {/* Hide Profile Card */}
+        {/* प्रोफ़ाइल छुपाने का कार्ड */}
         {/* <div className="bg-white rounded-2xl shadow-md p-6 space-y-3">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-semibold text-gray-800">
-              {isHidden ? 'Unhide Profile' : 'Hide Profile'}
+              {isHidden ? 'प्रोफ़ाइल दिखाएं' : 'प्रोफ़ाइल छुपाएं'}
             </h2>
             <button
               onClick={handleToggleHide}
               className="px-5 py-1.5 rounded-full cursor-pointer  bg-[#FF5A60] text-white text-sm font-medium"
             >
-              {isHidden ? 'Unhide' : 'Hide'}
+              {isHidden ? 'दिखाएं' : 'छुपाएं'}
             </button>
           </div>
           <p className="text-sm text-gray-600">
             {isHidden
-              ? 'Your profile is currently hidden.'
-              : 'Your profile is currently visible.'}
+              ? 'आपकी प्रोफ़ाइल फिलहाल छुपी हुई है।'
+              : 'आपकी प्रोफ़ाइल फिलहाल दिख रही है।'}
           </p>
           <p className="text-sm text-gray-600">
             {isHidden
-              ? 'When you unhide your profile, you will become visible again on Shaadi.com and be able to interact with others.'
-              : 'When you hide your profile, you will not be visible on Shaadi.com. You will neither be able to send invitations or messages.'}
+              ? 'जब आप अपनी प्रोफ़ाइल दिखाएंगे, तो आप फिर से Shaadi.com पर दिखाई देंगे और दूसरों के साथ संवाद कर सकेंगे।'
+              : 'जब आप अपनी प्रोफ़ाइल छुपाएंगे, तो आप Shaadi.com पर दिखाई नहीं देंगे और न ही निमंत्रण या संदेश भेज सकेंगे।'}
           </p>
         </div> */}
 
-        {/* Delete Profile Card */}
+        {/* प्रोफ़ाइल हटाने का कार्ड */}
         <div className="bg-white rounded-2xl shadow-md p-6 space-y-3">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold text-gray-800">Delete Profile</h2>
+            <h2 className="text-xl font-semibold text-gray-800">प्रोफ़ाइल हटाएं</h2>
             <Link to="/delete">
-            <button className="px-5 py-1.5 rounded-full cursor-pointer bg-[#FF5A60] text-white text-sm font-medium hover:bg-red-500 transition">
-              Delete
-            </button>
+              <button className="px-5 py-1.5 rounded-full cursor-pointer bg-[#FF5A60] text-white text-sm font-medium hover:bg-red-500 transition">
+                हटाएं
+              </button>
             </Link>
           </div>
-          <p className="text-sm text-gray-600">Delete your Profile from Shaadi.com</p>
+          <p className="text-sm text-gray-600">Shaadi.com से अपनी प्रोफ़ाइल हटाएं</p>
           <p className="text-sm text-gray-600">
-            You will permanently lose all profile information, match interactions, and paid memberships.
+            आप स्थायी रूप से अपनी सारी प्रोफ़ाइल जानकारी, मेल-जोल, और खरीदी गई सदस्यता खो देंगे।
           </p>
         </div>
 

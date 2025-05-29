@@ -6,12 +6,12 @@ import { LuDot } from "react-icons/lu";
 function DetailFour() {
   let API= import.meta.env.VITE_APP_API_URL
   const [profile, setProfile] = useState({
-    motherdetails: "Details about mother",
-    fatherdetails: "Details about father",
-    familylocation: "Location",
+    motherdetails: "मां के बारे में विवरण",
+    fatherdetails: "पिता के बारे में विवरण",
+    familylocation: "परिवार का स्थान",
     nosisters: 2,
     nobrothers: 1,
-    familyfinancialstatus: "Middle Class"
+    familyfinancialstatus: "मध्यम वर्ग"
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -24,7 +24,7 @@ function DetailFour() {
     familyfinancialstatus: profile.familyfinancialstatus
   });
 
-  // Fetch profile data when component mounts
+  // जब कॉम्पोनेंट लोड हो तब प्रोफ़ाइल डेटा प्राप्त करें
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -36,7 +36,7 @@ function DetailFour() {
         setProfile(data);
         setEditData(data);
       } catch (error) {
-        console.error("Error fetching profile:", error);
+        console.error("प्रोफ़ाइल प्राप्त करने में त्रुटि:", error);
       }
     };
 
@@ -53,7 +53,7 @@ function DetailFour() {
       setProfile(editData);
       setIsEditing(false);
     } catch (error) {
-      console.error("Error updating profile:", error);
+      console.error("प्रोफ़ाइल अपडेट करने में त्रुटि:", error);
     }
   };
 
@@ -64,7 +64,7 @@ function DetailFour() {
           <div className='flex items-center gap-2'>
             <LuDot className='text-4xl text-red-600' />
             <h1 className='text-red-600 text-base md:text-xl font-bold'>
-              Family Details
+              पारिवारिक विवरण
             </h1>
           </div>
           <div className='flex sm:justify-center'>
@@ -73,24 +73,21 @@ function DetailFour() {
               className='flex items-center mt-2 w-1/3 sm:w-full md:mt-0 gap-2 bg-black rounded-full text-white px-4 py-1 cursor-pointer hover:bg-gray-800 transition'
             >
               <FaPencilAlt />
-              <button
-                
-                className="bg-balck   text-white cursor-pointer rounded-md"
-              >
-                Edit
+              <button className="text-white cursor-pointer rounded-md">
+                संपादित करें
               </button>
             </div>
           </div>
         </div>
 
-        {/* Inner Section */}
+        {/* अंदरूनी सेक्शन */}
         <div className='py-3'>
           <div className='bg-white text-black p-4 rounded-md md:px-10'>
             <div className='md:flex md:justify-between md:items-start gap-10'>
-              {/* Left Column */}
+              {/* बाएं कॉलम */}
               <div className='flex flex-col space-y-3'>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Mother Details:</span>
+                  <span className='font-semibold min-w-[150px]'>मां का विवरण:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -103,7 +100,7 @@ function DetailFour() {
                   )}
                 </p>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Father Details:</span>
+                  <span className='font-semibold min-w-[150px]'>पिता का विवरण:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -116,7 +113,7 @@ function DetailFour() {
                   )}
                 </p>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Family Location:</span>
+                  <span className='font-semibold min-w-[150px]'>परिवार का स्थान:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -130,15 +127,15 @@ function DetailFour() {
                 </p>
               </div>
 
-              {/* Right Column */}
+              {/* दायां कॉलम */}
               <div className='flex flex-col space-y-3'>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>No. of Sisters:</span>
+                  <span className='font-semibold min-w-[150px]'>बहनों की संख्या:</span>
                   {isEditing ? (
                     <input
                       type="number"
                       value={editData.nosisters}
-                      onChange={(e) => setEditData({ ...editData, nosisters: e.target.value.toUpperCase() })}
+                      onChange={(e) => setEditData({ ...editData, nosisters: e.target.value })}
                       className="border rounded-md px-2 py-1 mt-2 md:mt-0 w-full"
                     />
                   ) : (
@@ -146,12 +143,12 @@ function DetailFour() {
                   )}
                 </p>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>No. of Brothers:</span>
+                  <span className='font-semibold min-w-[150px]'>भाइयों की संख्या:</span>
                   {isEditing ? (
                     <input
                       type="number"
                       value={editData.nobrothers}
-                      onChange={(e) => setEditData({ ...editData, nobrothers: e.target.value.toUpperCase() })}
+                      onChange={(e) => setEditData({ ...editData, nobrothers: e.target.value })}
                       className="border rounded-md px-2 py-1 mt-2 md:mt-0 w-full"
                     />
                   ) : (
@@ -159,7 +156,7 @@ function DetailFour() {
                   )}
                 </p>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Family Financial Status:</span>
+                  <span className='font-semibold min-w-[150px]'>आर्थिक स्थिति:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -177,10 +174,10 @@ function DetailFour() {
             {isEditing && (
               <div className="mt-4 flex justify-end gap-4">
                 <button onClick={() => setIsEditing(false)} className="px-4 cursor-pointer py-2 bg-gray-300 rounded">
-                  Cancel
+                  रद्द करें
                 </button>
                 <button onClick={handleSave} className="px-4 py-2 bg-[#FF5A60] cursor-pointer text-white rounded">
-                  Save
+                  सेव करें
                 </button>
               </div>
             )}

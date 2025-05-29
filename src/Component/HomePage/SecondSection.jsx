@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import { useWindowWidth } from '../../hooks/useWindowWidth'; // 👈 Import the custom hook
+import { useWindowWidth } from '../../hooks/useWindowWidth';
 
 import FloralLeft from '../../assets/Images/Zscasssc 2.png';
 import FloralRight from '../../assets/Images/Zscasssc 4.png';
@@ -64,7 +64,12 @@ function SecondSection() {
                 className="rounded-[60px] shadow-xl max-w-[595px] text-center px-2 py-2 sm:py-4 lg:p-4 relative border-4 border-rose-100"
               >
                 <div className="relative h-[450px] w-full rounded-[50px] overflow-hidden shadow-md">
-                  <img src={story.image} alt={story.name} className="w-full h-full object-cover" />
+                  {/* Image with blur effect */}
+                  <img
+                    src={story.image}
+                    alt={story.name}
+                    className="w-full h-full object-cover filter blur-md"
+                  />
                 </div>
                 <h2 className="text-2xl text-rose-600 font-semibold mt-4 font-[Dancing Script]">{story.name}</h2>
                 <p className="italic text-gray-600 text-sm mt-2 font-[Jost]">{story.text}</p>

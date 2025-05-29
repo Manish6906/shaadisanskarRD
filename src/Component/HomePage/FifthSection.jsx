@@ -13,7 +13,7 @@ const FifthSection = () => {
     {
       name: "डायमंड",
       price: 199,
-      credits: "30 क्रेडिट्स",
+      // credits: "30 क्रेडिट्स",
       features: [
         "लोगों को संदेश भेजें",
         "अधिकतम 30 प्रोफाइल्स देखें",
@@ -132,7 +132,7 @@ const FifthSection = () => {
               >
                 {processingPlan === plan.name
                   ? "प्रोसेस हो रहा है..."
-                  : "[जारी रखें]"}
+                  : "जारी रखें"}
               </button>
             </div>
           ))}

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FaBirthdayCake, FaCity, FaUser, FaHeart, FaGraduationCap, FaMoneyBillWave, FaWeight, FaTransgender, FaAppleAlt, FaWheelchair } from "react-icons/fa";
+import {
+  FaBirthdayCake, FaCity, FaUser, FaHeart, FaGraduationCap,
+  FaMoneyBillWave, FaWeight, FaAppleAlt, FaWheelchair
+} from "react-icons/fa";
+
 const FourthMatch = () => {
   const API = import.meta.env.VITE_APP_API_URL;
   const [profiles, setProfiles] = useState([]);
@@ -15,14 +19,14 @@ const FourthMatch = () => {
     const fetchProfilesByCity = async () => {
       try {
         if (!userid) {
-          setError("User ID not found.");
+          setError("यूज़र आईडी नहीं मिली।");
           setLoading(false);
           return;
         }
         const res = await axios.get(`${API}city/profilebycity/${userid}`);
         setProfiles(res.data.users);
       } catch (err) {
-        setError("Failed to fetch profiles.");
+        setError("प्रोफाइल प्राप्त करने में विफल।");
       } finally {
         setLoading(false);
       }
@@ -31,22 +35,22 @@ const FourthMatch = () => {
   }, [userid, API]);
 
   if (loading)
-    return <div className="text-center mt-10 text-[#FF5A60] font-semibold">Loading...</div>;
+    return <div className="text-center mt-10 text-[#FF5A60] font-semibold">लोड हो रहा है...</div>;
+
   if (error)
-    return (
-      <div className="text-center text-red-500 mt-10 font-semibold">{error}</div>
-    );
+    return <div className="text-center text-red-500 mt-10 font-semibold">{error}</div>;
+
   if (profiles.length === 0)
     return (
       <div className="text-center mt-10 text-gray-600 min-h-screen font-semibold">
-           No matching users found in your city.
+        आपके शहर में कोई मेल खाता सदस्य नहीं मिला।
       </div>
     );
 
   return (
-    <div className="p-6 md:p-10  mx-auto font-sans">
+    <div className="p-6 md:p-10 mx-auto font-sans">
       <h2 className="text-3xl font-semibold mb-10 text-center text-[#FF5A60] tracking-wide">
-        Members that match your According Your City
+        आपके शहर से मिलते-जुलते सदस्य
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -68,84 +72,63 @@ const FourthMatch = () => {
 
               {/* Info Section */}
               <div className="flex flex-col justify-between flex-1">
-                {/* Name */}
-               
                 <h3 className="text-2xl font-bold flex gap-2 items-center text-white mb-4">
-                 <FaUser className="text-xl" />
+                  <FaUser className="text-xl" />
                   {user.firstName} {user.lastName}
                 </h3>
 
-                {/* Info grid */}
                 <div className="grid grid-cols-2 gap-y-3 gap-x-6 text-white text-sm md:text-base">
                   <div className="flex items-center gap-2">
-                    <FaBirthdayCake className="" />
-                    <span>
-                      <strong>Age:</strong> {profile.age || "N/A"}
-                    </span>
+                    <FaBirthdayCake />
+                    <span><strong>उम्र:</strong> {profile.age || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaWeight className="" />
-                    <span>
-                      <strong>Height:</strong> {profile.height || "N/A"}
-                    </span>
+                    <FaWeight />
+                    <span><strong>कद:</strong> {profile.height || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaUser className="" />
-                    <span>
-                      <strong>Gender:</strong> {user.gender || "N/A"}
-                    </span>
+                    <FaUser />
+                    <span><strong>लिंग:</strong> {user.gender || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaHeart className="" />
-                    <span>
-                      <strong>Marital Status:</strong> {profile.maritalStatus || "N/A"}
-                    </span>
+                    <FaHeart />
+                    <span><strong>वैवाहिक स्थिति:</strong> {profile.maritalStatus || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaCity className="" />
-                    <span>
-                      <strong>City:</strong> {profile.city || "N/A"}
-                    </span>
+                    <FaCity />
+                    <span><strong>शहर:</strong> {profile.city || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaMoneyBillWave className="" />
-                    <span>
-                      <strong>Annual Income:</strong> {profile.annualincome || "N/A"}
-                    </span>
+                    <FaMoneyBillWave />
+                    <span><strong>वार्षिक आय:</strong> {profile.annualincome || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaGraduationCap className="" />
-                    <span>
-                      <strong>Qualification:</strong> {profile.highestqualification || "N/A"}
-                    </span>
+                    <FaGraduationCap />
+                    <span><strong>योग्यता:</strong> {profile.highestqualification || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaAppleAlt className="" />
-                    <span>
-                      <strong>Diet:</strong> {profile.diet || "N/A"}
-                    </span>
+                    <FaAppleAlt />
+                    <span><strong>आहार:</strong> {profile.diet || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaWheelchair className="" />
-                    <span>
-                      <strong>Disability:</strong> {profile.disability || "N/A"}
-                    </span>
+                    <FaWheelchair />
+                    <span><strong>विकलांगता:</strong> {profile.disability || "N/A"}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaBirthdayCake className="" />
+                    <FaBirthdayCake />
                     <span>
-                      <strong>DOB:</strong>{" "}
+                      <strong>जन्मतिथि:</strong>{" "}
                       {user.dob
-                        ? new Date(user.dob).toLocaleDateString("en-GB", {
+                        ? new Date(user.dob).toLocaleDateString("hi-IN", {
                             day: "2-digit",
                             month: "short",
                             year: "numeric",
@@ -153,14 +136,12 @@ const FourthMatch = () => {
                         : "N/A"}
                     </span>
                   </div>
-
                 </div>
 
-                {/* Button */}
                 <div className="mt-6 flex justify-center md:justify-end">
                   <Link to={`/profile/${user._id}`}>
-                    <button className="bg-[#FFCCA8] cursor-pointer font-semibold px-6 py-2 rounded-md  ">
-                      View Details
+                    <button className="bg-[#FFCCA8] cursor-pointer font-semibold px-6 py-2 rounded-md">
+                      विवरण देखें
                     </button>
                   </Link>
                 </div>

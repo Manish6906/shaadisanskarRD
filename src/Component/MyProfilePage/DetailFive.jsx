@@ -4,7 +4,8 @@ import { FaPencilAlt } from "react-icons/fa";
 import { LuDot } from "react-icons/lu";
 
 export default function DetailFive() {
-  let API= import.meta.env.VITE_APP_API_URL
+  let API = import.meta.env.VITE_APP_API_URL;
+
   const [profile, setProfile] = useState({
     highestqualification: '',
     collegesattended: '',
@@ -24,7 +25,7 @@ export default function DetailFive() {
     employername: ''
   });
 
-  // Fetch profile data on component mount
+  // प्रोफ़ाइल डेटा को लाने के लिए useEffect
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -34,16 +35,16 @@ export default function DetailFive() {
         const data = response.data.data;
 
         setProfile(data);
-        setEditData(data); // Update editData for the editing form
+        setEditData(data); // एडिट फॉर्म के लिए डेटा सेट करें
       } catch (error) {
-        console.error("Error fetching profile:", error);
+        console.error("प्रोफ़ाइल प्राप्त करने में त्रुटि:", error);
       }
     };
 
     fetchProfile();
   }, []);
 
-  // Handle saving the profile
+  // प्रोफ़ाइल को सेव करें
   const handleSave = async () => {
     try {
       const userProfile = JSON.parse(localStorage.getItem("userProfile"));
@@ -54,7 +55,7 @@ export default function DetailFive() {
       setProfile(editData);
       setIsEditing(false);
     } catch (error) {
-      console.error("Error updating profile:", error);
+      console.error("प्रोफ़ाइल अपडेट करने में त्रुटि:", error);
     }
   };
 
@@ -65,7 +66,7 @@ export default function DetailFive() {
           <div className='flex items-center gap-2'>
             <LuDot className='text-4xl text-red-600' />
             <h1 className='text-red-600 text-base md:text-xl font-bold'>
-              Education & Career
+              शिक्षा और करियर
             </h1>
           </div>
           <div className='flex sm:justify-center'>
@@ -74,19 +75,19 @@ export default function DetailFive() {
               className='flex items-center w-1/3 sm:w-full mt-2 md:mt-0 gap-2 bg-black rounded-full text-white px-4 py-1 cursor-pointer hover:bg-gray-800 transition'
             >
               <FaPencilAlt />
-              <span>Edit</span>
+              <span>संपादित करें</span>
             </div>
           </div>
         </div>
 
-        {/* Inner Section */}
+        {/* अंदर का सेक्शन */}
         <div className='py-3'>
           <div className='bg-white text-black p-4 rounded-md md:px-10'>
             <div className='md:flex md:justify-between md:items-start gap-10'>
-              {/* Left Column */}
+              {/* बाईं ओर */}
               <div className='flex flex-col space-y-3'>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Highest Qualification:</span>
+                  <span className='font-semibold min-w-[150px]'>उच्चतम योग्यता:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -99,7 +100,7 @@ export default function DetailFive() {
                   )}
                 </p>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Colleges Attended:</span>
+                  <span className='font-semibold min-w-[150px]'>कॉलेज का नाम:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -112,7 +113,7 @@ export default function DetailFive() {
                   )}
                 </p>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Annual Income:</span>
+                  <span className='font-semibold min-w-[150px]'>वार्षिक आय:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -126,10 +127,10 @@ export default function DetailFive() {
                 </p>
               </div>
 
-              {/* Right Column */}
+              {/* दाईं ओर */}
               <div className='flex flex-col space-y-3'>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Working With:</span>
+                  <span className='font-semibold min-w-[150px]'>कार्यरत संस्था:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -142,7 +143,7 @@ export default function DetailFive() {
                   )}
                 </p>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Working As:</span>
+                  <span className='font-semibold min-w-[150px]'>पद:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -155,7 +156,7 @@ export default function DetailFive() {
                   )}
                 </p>
                 <p className='flex flex-col md:flex-row'>
-                  <span className='font-semibold min-w-[150px]'>Employer Name:</span>
+                  <span className='font-semibold min-w-[150px]'>नियोक्ता का नाम:</span>
                   {isEditing ? (
                     <input
                       type="text"
@@ -173,10 +174,10 @@ export default function DetailFive() {
             {isEditing && (
               <div className="mt-4 flex justify-end gap-4">
                 <button onClick={() => setIsEditing(false)} className="px-4 cursor-pointer py-2 bg-gray-300 rounded">
-                  Cancel
+                  रद्द करें
                 </button>
                 <button onClick={handleSave} className="px-4 py-2 bg-[#FF5A60] cursor-pointer text-white rounded">
-                  Save
+                  सेव करें
                 </button>
               </div>
             )}
