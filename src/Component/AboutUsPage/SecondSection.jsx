@@ -1,11 +1,16 @@
 import React from "react";
-import Image15 from "../../assets/Images/Image15.png";
-import Ellipse1 from "../../assets/Images/Ellipse1.png";
 import ballon from "../../assets/Images/ballon.png";
-import Ellipse2 from "../../assets/Images/Ellipse2.png";
-import Ellipse3 from "../../assets/Images/Ellipse3.png";
-import Ellipse4 from "../../assets/Images/Ellipse4.png";
 import Heart from "../../assets/Images/Heart.png";
+import image60 from '../../assets/Images/Ellipse 33.png';
+import image61 from '../../assets/Images/Ellipse 34.png';
+import image62 from '../../assets/Images/Ellipse 35.png';
+import image63 from '../../assets/Images/Ellipse 36.png';
+import image64 from '../../assets/Images/Ellipse 37.png';
+
+
+
+
+
 
 function SecondSection() {
   return (
@@ -43,7 +48,7 @@ function SecondSection() {
       <div className="relative lg:w-1/2 w-full max-w-sm mx-auto mt-8 lg:mt-0">
         {/* Main Circle Image */}
         <img
-          src={Image15}
+          src={image60}
           alt="Profile Highlight"
           className="rounded-full shadow-xl w-full"
         />
@@ -55,18 +60,18 @@ function SecondSection() {
           className="absolute top-1/2 -translate-y-1/2 -right-8 sm:-right-44 md:-right-[4rem] w-20 md:w-28 xl:-right-[10rem] xl:w-50"
         />
         <img
-          src={Ellipse1}
-          alt="Ellipse1"
+          src={image61}
+          alt="image61"
           className="absolute top-16 -left-10 sm:top-24 sm:-left-16 w-12 sm:w-16"
         />
         <img
-          src={Ellipse2}
-          alt="Ellipse2"
+          src={image62}
+          alt="image62"
           className="absolute top-2 -right-13 sm:top-3 sm:-right-20 transform -translate-x-1/2 w-14 sm:w-20"
         />
         <img
-          src={Ellipse3}
-          alt="Ellipse3"
+          src={image63}
+          alt="image63"
           className="absolute -bottom-12 left-10 sm:-bottom-16 sm:left-14 w-12 sm:w-16"
         />
         <img
@@ -75,7 +80,7 @@ function SecondSection() {
           className="absolute top-10 left-2 sm:left-4 w-6 sm:w-8"
         />
         <img
-          src={Ellipse4}
+          src={image64}
           alt="Ellipse4"
           className="absolute top-64 -right-1 sm:top-80 sm:-right-14 w-12 sm:w-16"
         />

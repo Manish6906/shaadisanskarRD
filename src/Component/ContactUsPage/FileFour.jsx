@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Image18 from '../../assets/Images/Image18.png';
+import girl10 from '../../assets/Images/475905352_3876746929233421_3431252029074728556_n 1.png';
+
 
 function FileFour() {
   const [isChecked, setIsChecked] = useState(false);
@@ -33,7 +34,7 @@ function FileFour() {
         {/* बाएं ओर - छवि */}
         <div className="md:w-1/2 h-[550px] p-4">
           <img
-            src={Image18}
+            src={girl10}
             alt="संपर्क"
             className="w-full h-full rounded-md object-fill"
           />
