@@ -12,10 +12,10 @@ import Image6 from '../../assets/Images/Rectangle 41 (1).png';
 import Image3 from '../../assets/Images/Property 1=Variant2.png';
 
 const stories = [
-  { id: 1, image: Image3, name: 'Ravi & Anjali', text: '“We met through this platform, and within months, we knew we were meant to be. Thank you for making our dream come true!”' },
-  { id: 2, image: Image4, name: 'Aman & Shweta', text: '“We connected on this platform and instantly felt a spark. What began as a simple chat turned into a beautiful bond.”' },
-  { id: 3, image: Image5, name: 'Geetanjali & Aditya', text: '“Thanks to this platform, I met Aditya—my perfect match. Our journey from strangers to soulmates began here.”' },
-  { id: 4, image: Image6, name: 'Paras & Apoorva', text: '“We found love where we least expected—right here on this platform. So thankful for this journey!”' },
+  { id: 1, image: Image3, name: 'रवि और अंजलि', text: '“मैंने इस प्लेटफॉर्म से एक साल पहले जुड़ाव किया और सिर्फ एक महीने में रवि से मुलाकात हो गई। इतना सच्चा और caring व्यक्ति कभी मिल सकता है, मैंने सोचा भी नहीं था। इस शानदार प्लेटफॉर्म का दिल से धन्यवाद!!”' },
+  { id: 2, image: Image4, name: 'अमन और श्वेता', text: '“हम इस प्लेटफॉर्म पर मिले और पहली बातचीत में ही एक जुड़ाव महसूस हुआ। एक साधारण चैट से शुरू होकर यह एक खूबसूरत रिश्ते में बदल गया। हमें मिलाने के लिए हमेशा आभारी रहेंगे!”' },
+  { id: 3, image: Image5, name: 'गीतांजलि और आदित्य', text: '“इस प्लेटफॉर्म की वजह से मेरी मुलाकात आदित्य से हुई — जो मेरे लिए एकदम परफेक्ट हैं। अजनबियों से लेकर आत्मीय साथियों तक की हमारी यात्रा यहीं से शुरू हुई और हम बेहद खुश हैं!”' },
+  { id: 4, image: Image6, name: 'पारस और अपूर्वा', text: '“जहां उम्मीद नहीं थी, वहीं हमें प्यार मिल गया — इसी प्लेटफॉर्म पर। अब हम मिलकर अपना भविष्य बना रहे हैं और यह सब एक साधारण संदेश से शुरू हुआ। दिल से शुक्रिया!”' },
 ];
 
 // Group stories
@@ -37,8 +37,8 @@ function SecondSection() {
   return (
     <section className="relative px-4 py-16 overflow-hidden bg-pink-50 ">
       <h1 className="text-5xl font-serif text-center font-bold mb-20">
-        <span className="text-black">Success </span>
-        <span className="text-rose-600 italic">Stories</span>
+        <span className="text-black">सफलता की </span>
+        <span className="text-rose-600 italic">कहानियाँ</span>
       </h1>
 
       <img src={FloralLeft} alt="left flower" className="absolute -left-3 top-40 w-40 hidden md:block" />
