@@ -1,10 +1,10 @@
 import React from "react";
-import Image15 from "../../assets/Images/Image15.png";
-import Ellipse1 from "../../assets/Images/Ellipse1.png";
+import Image15 from "../../assets/Images/Ellipse 33.png";
+import Ellipse1 from "../../assets/Images/Ellipse 37.png";
 import ballon from "../../assets/Images/ballon.png";
-import Ellipse2 from "../../assets/Images/Ellipse2.png";
-import Ellipse3 from "../../assets/Images/Ellipse3.png";
-import Ellipse4 from "../../assets/Images/Ellipse4.png";
+import Ellipse2 from "../../assets/Images/Ellipse 34.png";
+import Ellipse3 from "../../assets/Images/Ellipse 35.png";
+import Ellipse4 from "../../assets/Images/Ellipse 36.png";
 import Heart from "../../assets/Images/Heart.png";
 
 function SecondSection() {

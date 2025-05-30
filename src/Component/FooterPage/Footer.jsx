@@ -1,10 +1,10 @@
 import React from "react";
-import photo1 from "../../assets/Images/Rectangle 45.png";
-import photo2 from "../../assets/Images/Rectangle 47.png";
-import photo3 from "../../assets/Images/Rectangle 50.png";
-import photo4 from "../../assets/Images/Rectangle 48.png";
-import photo5 from "../../assets/Images/Rectangle 49.png";
-import photo6 from "../../assets/Images/Rectangle 51.png";
+import photo1 from "../../assets/Images/Rectangle 45 (1).png";
+import photo2 from "../../assets/Images/Rectangle 47 (1).png";
+import photo3 from "../../assets/Images/Rectangle 50 (1).png";
+import photo4 from "../../assets/Images/Rectangle 48 (1).png";
+import photo5 from "../../assets/Images/Rectangle 49 (1).png";
+import photo6 from "../../assets/Images/Rectangle 51 (1).png";
 import Logo2 from '../../assets/Images/Shaadi Sanskar 2.png';
 
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
