@@ -290,7 +290,8 @@ const handleChange = (e) => {
               {/* Submit */}
               <div className="flex justify-center">
                 <button type="submit" className="bg-[#824A23] w-full cursor-pointer text-white px-8 py-2 rounded-full">
-                  Continue
+                 जारी रखें
+
                 </button>
               </div>
             </form>
