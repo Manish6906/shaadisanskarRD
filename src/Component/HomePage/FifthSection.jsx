@@ -8,37 +8,17 @@ const FifthSection = () => {
   const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID;
   const navigate = useNavigate();
 
+  
   const plans = [
     {
-      name: "Gold",
-      price: 149,
-      credits: 10,
+      name: "डायमंड",
+      price: 199,
+      // credits: "30 क्रेडिट्स",
       features: [
-        "Send messages upto 10 people",
-        "View profiles",
+        "लोगों को संदेश भेजें",
+        "अधिकतम 30 प्रोफाइल्स देखें",
+        "अन्य प्रोफाइल्स से अलग दिखें",
       ],
-    },
-    {
-      name: "Diamond",
-      price: 299,
-      credits: 30,
-      features: [
-        "Send messages up to 30 people",
-        "View profiles",
-        "Stand out from other profiles",
-      ],
-      bgClass: "bg-gradient-to-tr from-gray-400 via-gray-600 to-gray-800 text-white",
-    },
-    {
-      name: "Platinum",
-      price: 599,
-      credits: 100,
-      features: [
-        "Send messages up to 100 people",
-        "View profiles",
-        "Stand out from other profiles",
-      ],
-      bgClass: "bg-gradient-to-tr from-gray-400 via-gray-600 to-gray-800 text-white",
     },
   ];
 
@@ -47,7 +27,7 @@ const FifthSection = () => {
 
   const handlePayment = async (plan) => {
     if (!user) {
-      toast.warning("Please login first.");
+      toast.warning("कृपया पहले लॉगिन करें।");
       setTimeout(() => navigate("/login"), 1000);
       return;
     }
@@ -56,7 +36,7 @@ const FifthSection = () => {
 
     try {
       const { data } = await axios.post(`${API}api/payment/create-order`, {
-        amount: plan.price * 100,
+        amount: plan.price ,
       });
 
       const options = {
@@ -76,10 +56,10 @@ const FifthSection = () => {
               plan: plan.credits,
               planName: plan.name,
             });
-            toast.success("Payment Successful! Credits Added.");
+            toast.success("भुगतान सफल रहा! क्रेडिट्स जोड़ दिए गए हैं।");
             setTimeout(() => navigate("/userReceipts"), 1000);
           } catch (error) {
-            toast.error("Payment verification failed.");
+            toast.error("भुगतान सत्यापन विफल रहा।");
           } finally {
             setProcessingPlan(null);
           }
@@ -95,72 +75,71 @@ const FifthSection = () => {
       const rzp = new window.Razorpay(options);
       rzp.open();
       rzp.on("payment.failed", (response) => {
-        alert("Payment failed: " + response.error.description);
+        alert("भुगतान विफल: " + response.error.description);
         setProcessingPlan(null);
       });
     } catch (err) {
-      toast.error("Something went wrong. Please try again.");
+      toast.error("कुछ गलत हो गया। कृपया पुनः प्रयास करें।");
       setProcessingPlan(null);
     }
   };
 
   return (
-    <div className=" bg-pink-50 py-16 px-6 relative overflow-hidden">
+    <div className="bg-pink-50 py-16 px-6 relative overflow-hidden">
       <ToastContainer />
-      
-      {/* Optional Decorative Circles */}
+
+      {/* Decorative Circles */}
       <div className="absolute top-0 left-0 w-48 h-48 bg-red-300 rounded-full blur-3xl opacity-30 -z-10" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-red-400 rounded-full blur-3xl opacity-20 -z-10" />
 
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-black">
-          Upgrade to <span className="text-red-400">Premium</span> & Unlock Features
-        </h1>
-        <p className="text-gray-900 mt-3 text-lg">Exclusive membership benefits</p>
-      </div>
+  <h1 className="text-4xl font-bold text-black inline-block border-b-2 border-red-400 pb-2">
+    रजिस्ट्रेशन
+  </h1>
+</div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {plans.map((plan, index) => (
-          <div
-            key={index}
-            className="relative bg-red-400 bg-opacity-10 backdrop-blur-lg p-8 rounded-3xl shadow-lg flex flex-col items-center text-white hover:scale-105 transition-transform duration-300"
-          >
-            {/* Price badge */}
-            <div className="absolute -top-6 w-24 h-24 bg-red-300 rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
-              ₹{plan.price}
-            </div>
 
-            <h2 className="mt-12 text-2xl font-bold mb-3">{plan.name}</h2>
-            <p className="mb-4 text-sm text-white">{plan.credits} Credits</p>
+      {/* Centered Plans */}
+      <div className="flex justify-center">
+  <div className="flex flex-wrap justify-center gap-8 max-w-7xl">
 
-            <ul className="space-y-3 mb-6 text-sm text-left w-full">
-              {[
-                "Send messages upto 10 people",
-                "View profiles",
-                "Standout from other profiles",
-              ].map((feature, i) => (
-                <li key={i} className="flex items-center">
-                  <span className={`mr-3 text-lg ${plan.features.includes(feature) ? "text-green-400" : "text-red-500"}`}>
-                    {plan.features.includes(feature) ? "✔" : "✖"}
-                  </span>
-                  <span className="text-white">{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <button
-              onClick={() => handlePayment(plan)}
-              disabled={processingPlan === plan.name}
-              className="w-80 py-2 bg-white rounded-full cursor-pointer font-semibold text-black hover:bg-black hover:text-white transition-all duration-300 disabled:opacity-50"
+          {plans.map((plan, index) => (
+            <div
+              key={index}
+              className={`relative bg-red-400 bg-opacity-10 backdrop-blur-lg p-8 rounded-3xl shadow-lg flex flex-col items-center text-white hover:scale-105 transition-transform duration-300`}
             >
-              {processingPlan === plan.name ? "Processing..." : "Buy Now"}
-            </button>
-          </div>
-        ))}
+              {/* Price badge */}
+              <div className="absolute -top-6 w-24 h-24 bg-red-300 rounded-full flex items-center justify-center text-xl font-bold shadow-lg">
+                ₹{plan.price}
+              </div>
+
+              <h2 className="mt-12 text-2xl font-bold mb-3">{plan.name}</h2>
+              <p className="mb-4 text-sm text-white">{plan.credits}</p>
+
+              <ul className="space-y-3 mb-6 text-sm text-left w-full">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-center">
+                    <span className="mr-3 text-lg text-green-400">✔</span>
+                    <span className="text-white">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={() => handlePayment(plan)}
+                disabled={processingPlan === plan.name}
+                className="w-80 py-2 bg-white rounded-full cursor-pointer font-semibold text-black hover:bg-black hover:text-white transition-all duration-300 disabled:opacity-50"
+              >
+                {processingPlan === plan.name
+                  ? "प्रोसेस हो रहा है..."
+                  : "जारी रखें"}
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
 export default FifthSection;
-

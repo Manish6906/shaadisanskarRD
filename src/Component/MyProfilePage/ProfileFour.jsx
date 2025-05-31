@@ -83,49 +83,49 @@ const ProfileFour = () => {
             name="age"
             value={profile.age}
             onChange={handleInputChange}
-            placeholder="Age"
+            placeholder="आयु"
             className="border p-2 rounded"
           />
           <input
             name="height"
             value={profile.height}
             onChange={handleInputChange}
-            placeholder="Height in cm"
+            placeholder="ऊंचाई (सेमी में)"
             className="border p-2 rounded"
           />
           <input
             name="maritalstatus"
             value={profile.maritalstatus}
             onChange={handleInputChange}
-            placeholder="Marital Status"
+            placeholder="वैवाहिक स्थिति"
             className="border p-2 rounded"
           />
           <input
             name="bloodgroup"
             value={profile.bloodgroup}
             onChange={handleInputChange}
-            placeholder="Blood Group"
+            placeholder="ब्लड ग्रुप"
             className="border p-2 rounded"
           />
           <input
             name="city"
             value={profile.city}
             onChange={handleInputChange}
-            placeholder="City"
+            placeholder="शहर"
             className="border p-2 rounded"
           />
           <input
             name="gothram"
             value={profile.gothram}
             onChange={handleInputChange}
-            placeholder="Gothram"
+            placeholder="गोत्र"
             className="border p-2 rounded"
           />
           <input
             name="mothertongue"
             value={profile.mothertongue}
             onChange={handleInputChange}
-            placeholder="Mother Tongue"
+            placeholder="मातृभाषा"
             className="border p-2 rounded"
           />
           <div className="col-span-1 sm:col-span-2 flex justify-end gap-4 mt-4">
@@ -133,13 +133,13 @@ const ProfileFour = () => {
               onClick={() => setIsEditing(false)}
               className="px-4 py-2 bg-gray-300 rounded"
             >
-              Cancel
+              रद्द करें
             </button>
             <button
               onClick={handleSave}
               className="px-4 py-2 bg-[#4ac429] text-white rounded"
             >
-              Save
+              सहेजें
             </button>
           </div>
         </div>
@@ -147,19 +147,19 @@ const ProfileFour = () => {
         <div className="flex flex-col sm:flex-row justify-between items-start gap-6">
           <div className="space-y-6 w-full sm:w-1/2">
             <div className="flex">
-              <span className="w-32">Age / Height</span>
+              <span className="w-32">आयु / ऊंचाई</span>
               <span className="mr-2">:</span>
               <span>
                 {profile.age || "-"} / {profile.height || "-"}
               </span>
             </div>
             <div className="flex">
-              <span className="w-32">Marital Status</span>
+              <span className="w-32">वैवाहिक स्थिति</span>
               <span className="mr-2">:</span>
               <span>{profile.maritalstatus || "-"}</span>
             </div>
             <div className="flex">
-              <span className="w-32">Blood Group</span>
+              <span className="w-32">ब्लड ग्रुप</span>
               <span className="mr-2">:</span>
               <span>{profile.bloodgroup || "-"}</span>
             </div>
@@ -167,17 +167,17 @@ const ProfileFour = () => {
 
           <div className="space-y-6 w-full sm:w-1/2">
             <div className="flex">
-              <span className="w-40">City</span>
+              <span className="w-40">शहर</span>
               <span className="mr-2">:</span>
               <span>{profile.city || "-"}</span>
             </div>
             <div className="flex">
-              <span className="w-40">Gothram</span>
+              <span className="w-40">गोत्र</span>
               <span className="mr-2">:</span>
               <span>{profile.gothram || "-"}</span>
             </div>
             <div className="flex">
-              <span className="w-40">Mother Tongue</span>
+              <span className="w-40">मातृभाषा</span>
               <span className="mr-2">:</span>
               <span>{profile.mothertongue || "-"}</span>
             </div>
@@ -191,7 +191,7 @@ const ProfileFour = () => {
           className="absolute top-2 right-2 bg-black cursor-pointer text-white text-sm px-2 py-1 rounded-full flex items-center gap-1"
         >
           <FontAwesomeIcon icon={faPen} className="text-xs" />
-          Edit
+          संपादित करें
         </button>
       )}
     </div>

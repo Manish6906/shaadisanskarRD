@@ -10,7 +10,7 @@ function AboutUsPage() {
   return (
     <>
     <Navbar />
-    <OneSection name="Find the one who feels like home" />
+    <OneSection name="उससे मिलिए जो घर जैसा एहसास कराए" />
     <SecondSection />
     <ThirdSection />
     <FourthSections />

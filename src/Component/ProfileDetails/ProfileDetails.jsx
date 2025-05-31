@@ -14,111 +14,84 @@ import {
   GiFamilyTree, GiLoveMystery, GiHealthNormal, GiIndiaGate,
   GiBodyHeight, GiGothicCross
 } from 'react-icons/gi';
-  import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 function ProfileDetails() {
-  let API= import.meta.env.VITE_APP_API_URL
+  let API = import.meta.env.VITE_APP_API_URL;
   const { userId } = useParams();
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
-  const [CurrentUser, setCurrentUser]= useState(null)
+  const [CurrentUser, setCurrentUser] = useState(null);
   const [showNumber, setShowNumber] = useState(false);
-const [hasDeductedCredits, setHasDeductedCredits] = useState(false);
+  const [hasDeductedCredits, setHasDeductedCredits] = useState(false);
   let a = JSON.parse(localStorage.getItem("userProfile"));
-  let id= a?._id
-  // console.log("hello id ", id);
-  
+  let id = a?._id;
 
   useEffect(() => {
     axios
       .get(`${API}user/user-Profile/${userId}`)
       .then((response) => {
-        setProfile(response.data)
+        setProfile(response.data);
       })
       .catch((error) => console.error('Error fetching profile data:', error));
-      
 
-      axios.get(`${API}user/${id}`)
-      .then((res)=>
-      {
-        setCurrentUser(res.data.user.credits)
-        // console.log("hello",res.data.user.credits);
-        
-      })
-      // console.log("current", CurrentUser);
+    axios.get(`${API}user/${id}`)
+      .then((res) => {
+        setCurrentUser(res.data.user.credits);
+      });
   }, [userId]);
 
- 
-
-
-// const handleConnect = () => {
-//   if (CurrentUser > 0) {
-//       axios.post(`${API}user/credits/${id}`)
-//         .then((res) => {
-//           console.log("hello credits", res.data);
-//           navigate(`/Chat}`);
-//         })
-//   } else {
-//     toast.info("You Need To Purchase Any Plan");
-//     setTimeout(() => {
-//       navigate('/plans');
-//     }, 1500);
-//   }
-// };
-
   const iconMap = {
-    'Age': <FaBirthdayCake />,
-    'Gender': <FaVenusMars />,
-    'Blood Group': <FaHeartbeat />,
-    'City': <FaCity />,
-    'Height': <GiBodyHeight />,
-    'Diet': <FaUtensils />,
-    'Hobbies': <FaUsers />,
-    'Marital Status': <GiLoveMystery />,
-    'Religion': <FaBalanceScale />,
-    'Community': <FaUsers />,
-    'Sub Community': <FaUsers />,
-    'Mother Tongue': <FaLanguage />,
-    'Manglik': <FaBalanceScale />,
-    'Grow Up Location': <FaMapMarkerAlt />,
-    'Health Information': <GiHealthNormal />,
-    'Disability': <GiHealthNormal />,
-    'Gothram': <GiGothicCross />,
-    'Family Details': <GiFamilyTree />,
-    'Father': <FaUser />,
-    'Mother': <FaUser />,
-    'Location': <FaMapMarkerAlt />,
-    'No. of Sisters': <FaUsers />,
-    'No. of Brothers': <FaUsers />,
-    'Family Financial Status': <FaMoneyBillWave />,
-    'Qualification': <FaUniversity />,
-    'Colleges Attended': <FaUniversity />,
-    'Working As': <FaBuilding />,
-    'Employer': <FaBuilding />,
-    'Annual Income': <FaMoneyBillWave />,
-    'Working With': <FaBuilding />,
-    'Current Residence': <FaHome />,
-    'State of Residence': <GiIndiaGate />,
-    'Residency Status': <FaHome />,
-    'City of Birth': <FaCity />,
-    'Time of Birth': <FaRegClock />,
-    'Zip Code': <FaMapMarkerAlt />,
-    'Living In India Since': <GiIndiaGate />,
-    'Live with Family': <FaHome />
+    'उम्र': <FaBirthdayCake />,
+    'लिंग': <FaVenusMars />,
+    'ब्लड ग्रुप': <FaHeartbeat />,
+    'शहर': <FaCity />,
+    'कद': <GiBodyHeight />,
+    'आहार': <FaUtensils />,
+    'शौक': <FaUsers />,
+    'वैवाहिक स्थिति': <GiLoveMystery />,
+    'धर्म': <FaBalanceScale />,
+    'जाति': <FaUsers />,
+    'उप जाति': <FaUsers />,
+    'मातृभाषा': <FaLanguage />,
+    'मांगलिक': <FaBalanceScale />,
+    'जहाँ पले-बढ़े': <FaMapMarkerAlt />,
+    'स्वास्थ्य जानकारी': <GiHealthNormal />,
+    'विकलांगता': <GiHealthNormal />,
+    'गोत्र': <GiGothicCross />,
+    'परिवार का विवरण': <GiFamilyTree />,
+    'पिता': <FaUser />,
+    'माता': <FaUser />,
+    'परिवार का स्थान': <FaMapMarkerAlt />,
+    'बहनों की संख्या': <FaUsers />,
+    'भाइयों की संख्या': <FaUsers />,
+    'पारिवारिक आर्थिक स्थिति': <FaMoneyBillWave />,
+    'योग्यता': <FaUniversity />,
+    'कॉलेज': <FaUniversity />,
+    'कार्य': <FaBuilding />,
+    'नियोक्ता': <FaBuilding />,
+    'वार्षिक आय': <FaMoneyBillWave />,
+    'कंपनी प्रकार': <FaBuilding />,
+    'वर्तमान निवास': <FaHome />,
+    'राज्य': <GiIndiaGate />,
+    'निवास स्थिति': <FaHome />,
+    'जन्म शहर': <FaCity />,
+    'जन्म समय': <FaRegClock />,
+    'पिन कोड': <FaMapMarkerAlt />,
+    'भारत में निवास कब से': <GiIndiaGate />,
+    'परिवार के साथ रहते हैं': <FaHome />
   };
 
   if (!profile) {
     return (
       <div className="text-center py-24 text-pink-600 text-xl font-semibold animate-pulse">
-        Loading profile...
+        प्रोफ़ाइल लोड हो रही है...
       </div>
     );
   }
 
-  // Determine theme based on gender
   const gender = profile.userId?.gender;
-  console.log(gender);
-  
+
   let bgGradient, borderColor, textColor, cardBg, cardBorder, buttonBg, backgroundImage;
 
   if (gender === "Female") {
@@ -138,8 +111,7 @@ const [hasDeductedCredits, setHasDeductedCredits] = useState(false);
     buttonBg = "bg-blue-600 hover:bg-blue-700";
     backgroundImage = "none";
   } else {
-    // Other gender - brown theme
-    bgGradient = "bg-gradient-to-tr from-yellow-100 via-yellow-50 to-yellow-200"; // warm brownish yellow
+    bgGradient = "bg-gradient-to-tr from-yellow-100 via-yellow-50 to-yellow-200";
     borderColor = "border-yellow-400";
     textColor = "text-yellow-700";
     cardBg = "bg-yellow-50 hover:bg-yellow-100";
@@ -150,62 +122,28 @@ const [hasDeductedCredits, setHasDeductedCredits] = useState(false);
 
   return (
     <>
-    
-      <div
-        className={`${bgGradient} bg-fixed bg-cover min-h-screen py-10 px-2`}
-        style={{ backgroundImage: backgroundImage }}
-      >
-      <ToastContainer />
+      <div className={`${bgGradient} bg-fixed bg-cover min-h-screen py-10 px-2`} style={{ backgroundImage }}>
+        <ToastContainer />
         <div className={`max-w-6xl mx-auto bg-white/80 backdrop-blur-lg p-4 md:p-10 rounded-3xl border ${borderColor} shadow-xl space-y-10`}>
+          <div className="flex flex-col items-center">
+            <div className="w-full flex justify-between items-center">
+              <button
+                onClick={() => navigate(-1)}
+                className={`px-5 py-2 ${buttonBg} cursor-pointer text-white rounded-full shadow-lg transition duration-300`}
+              >
+                ⬅ वापसी
+              </button>
 
-          {/* Top Buttons */}
-       <div className="flex flex-col items-center">
-  <div className="w-full flex justify-between items-center">
-    <button
-      onClick={() => navigate(-1)}
-      className={`px-5 py-2 ${buttonBg} cursor-pointer text-white rounded-full shadow-lg transition duration-300`}
-    >
-      ⬅ Back
-    </button>
+              <button
+                onClick={() => navigate(`/Chat/${userId}`)}
+                className={`flex items-center gap-2 px-5 py-2 cursor-pointer ${buttonBg} text-white rounded-full shadow-lg transition duration-300`}
+              >
+                <BsChatRightHeartFill />
+                अभी जुड़ें
+              </button>
+            </div>
+          </div>
 
-    <button
-      onClick={() => navigate(`/Chat/${userId}`)}
-      className={`flex items-center gap-2 px-5 py-2 cursor-pointer ${buttonBg} text-white rounded-full shadow-lg transition duration-300`}
-    >
-      <BsChatRightHeartFill />
-      Connect Now
-    </button>
-  </div>
-
-  {/* Mobile Number Display */}
-  {/* {showNumber && (
-    <div className="text-center mt-4 text-lg font-semibold text-green-600 flex items-center gap-1">
-      <FaWhatsapp /> Whatsapp Number: {profile.userId?.mobileNumber || 'Not Provided'}
-    </div>
-  )} */}
-
-  {/* WhatsApp Button */}
-  {/* {showNumber && profile.userId?.mobileNumber && (
-    <a
-      href={`https://wa.me/${profile.userId.mobileNumber}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-md transition"
-    >
-      <svg
-        className="w-5 h-5"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path d="M20.52 3.48A11.84 11.84 0 0012 0C5.37 0 .02 5.34.02 11.93c0 2.1.55 4.14 1.6 5.94L0 24l6.3-1.64a12.13 12.13 0 005.7 1.45h.03c6.63 0 12-5.34 12-11.93 0-3.19-1.25-6.2-3.51-8.4zM12 22.03h-.02a10.07 10.07 0 01-5.13-1.4l-.37-.22-3.73.97 1-3.65-.24-.38A9.87 9.87 0 012 11.93C2 6.5 6.5 2 12 2c2.7 0 5.2 1.05 7.07 2.94A9.94 9.94 0 0122 11.93c0 5.43-4.5 10.1-10 10.1zm5.44-7.47c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.08a8.3 8.3 0 01-2.45-1.5 9.18 9.18 0 01-1.7-2.12c-.17-.3 0-.46.13-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38 0-.53-.07-.15-.67-1.6-.92-2.19-.24-.58-.5-.5-.68-.5H7.7c-.2 0-.5.06-.76.35-.25.3-.97.95-.97 2.3s1 2.66 1.13 2.84c.14.2 1.96 2.99 4.76 4.03.67.29 1.2.46 1.6.6.67.2 1.28.17 1.76.1.54-.08 1.78-.73 2.03-1.44.25-.72.25-1.35.17-1.44-.1-.1-.28-.16-.58-.3z" />
-      </svg>
-      Chat on WhatsApp
-    </a>
-  )} */}
-</div>
-
-
-          {/* Profile Header */}
           <div className="flex flex-col items-center text-center space-y-4">
             <img
               src={profile.userId?.profileImage}
@@ -217,65 +155,64 @@ const [hasDeductedCredits, setHasDeductedCredits] = useState(false);
             </h2>
           </div>
 
-          {/* Sections */}
           <div className="space-y-10">
             {[
               {
-                title: '💖 Personal Information',
+                title: '💖 व्यक्तिगत जानकारी',
                 data: [
-                  ['Age', profile.age],
-                  ['Gender', profile.userId?.gender],
-                  ['Blood Group', profile.bloodgroup],
-                  ['City', profile.city],
-                  ['Height', profile.height],
-                  ['Diet', profile.diet],
-                  ['Hobbies', profile.hobbies],
-                  ['Marital Status', profile.maritalStatus],
-                  ['Religion', profile.religion],
-                  ['Community', profile.community],
-                  ['Sub Community', profile.subCommunity],
-                  ['Mother Tongue', profile.mothertongue],
-                  ['Manglik', profile.manglik],
-                  ['Grow Up Location', profile.growup],
-                  ['Health Information', profile.healthinformation],
-                  ['Disability', profile.disability],
-                  ['Gothram', profile.gothram]
+                  ['उम्र', profile.age],
+                  ['लिंग', profile.userId?.gender],
+                  ['ब्लड ग्रुप', profile.bloodgroup],
+                  ['शहर', profile.city],
+                  ['कद', profile.height],
+                  ['आहार', profile.diet],
+                  ['शौक', profile.hobbies],
+                  ['वैवाहिक स्थिति', profile.maritalStatus],
+                  ['धर्म', profile.religion],
+                  ['जाति', profile.community],
+                  ['उप जाति', profile.subCommunity],
+                  ['मातृभाषा', profile.mothertongue],
+                  ['मांगलिक', profile.manglik],
+                  ['जहाँ पले-बढ़े', profile.growup],
+                  ['स्वास्थ्य जानकारी', profile.healthinformation],
+                  ['विकलांगता', profile.disability],
+                  ['गोत्र', profile.gothram]
                 ]
               },
               {
-                title: '🏠 Family Information',
+                title: '🏠 पारिवारिक जानकारी',
                 data: [
-                  ['Family Details', profile.familydetail],
-                  ['Father', profile.fatherdetails],
-                  ['Mother', profile.motherdetails],
-                  ['Location', profile.familylocation],
-                  ['No. of Sisters', profile.nosisters],
-                  ['No. of Brothers', profile.nobrothers],
-                  ['Family Financial Status', profile.familyfinancialstatus]
+                  ['परिवार का विवरण', profile.familydetail],
+                  ['पिता', profile.fatherdetails],
+                  ['माता', profile.motherdetails],
+                  ['परिवार का स्थान', profile.familylocation],
+                  ['बहनों की संख्या', profile.nosisters],
+                  ['भाइयों की संख्या', profile.nobrothers],
+                  ['पारिवारिक आर्थिक स्थिति', profile.familyfinancialstatus]
                 ]
               },
               {
-                title: '💼 Professional Information',
+                title: '💼 पेशेवर जानकारी',
                 data: [
-                  ['Qualification', profile.highestqualification],
-                  ['Colleges Attended', profile.collegesattended],
-                  ['Working As', profile.workingas],
-                  ['Employer', profile.employername],
-                  ['Annual Income', profile.annualincome],
-                  ['Working With', profile.workingwith],
-                  ['Current Residence', profile.currentresidence],
-                  ['State of Residence', profile.stateofresidence],
-                  ['Residency Status', profile.residencystatus]
+                  ['योग्यता', profile.highestqualification],
+                  ['कॉलेज', profile.collegesattended],
+                  ['कार्य', profile.workingas],
+                  ['नियोक्ता', profile.employername],
+                  ['वार्षिक आय', profile.annualincome],
+                  ['कंपनी प्रकार', profile.workingwith],
+                  ['वर्तमान निवास', profile.currentresidence],
+                  ['राज्य', profile.stateofresidence],
+                  ['निवास स्थिति', profile.residencystatus]
                 ]
               },
               {
-                title: '📍 Location & Contact',
+                title: '📍 स्थान और संपर्क',
                 data: [
-                  ['City of Birth', profile.cityofbirth],
-                  ['Time of Birth', profile.timeofbirth],
-                  ['Zip Code', profile.zippincode],
-                  ['Living In India Since', profile.livingInIndiaSince],
-                  ['Live with Family', profile.liveWithFamily ? 'Yes' : 'No']
+                  ['जन्म शहर', profile.cityofbirth],
+                  ['जन्म समय', profile.timeofbirth],
+                  ['पिन कोड', profile.zippincode],
+                  ['भारत में निवास कब से', profile.livingInIndiaSince],
+                  ['परिवार के साथ रहते हैं', profile.liveWithFamily ? 'हाँ' : 'नहीं']
                 ]
               }
             ].map((section, idx) => (
@@ -294,7 +231,7 @@ const [hasDeductedCredits, setHasDeductedCredits] = useState(false);
                     >
                       <div className={`${textColor} text-xl`}>{iconMap[label]}</div>
                       <div className="text-sm">
-                        <strong>{label}:</strong> {value || 'N/A'}
+                        <strong>{label}:</strong> {value || 'उपलब्ध नहीं'}
                       </div>
                     </div>
                   ))}
@@ -304,7 +241,6 @@ const [hasDeductedCredits, setHasDeductedCredits] = useState(false);
           </div>
         </div>
       </div>
-    
     </>
   );
 }

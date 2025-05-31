@@ -11,7 +11,7 @@ const UploadSection = () => {
   const [userImages, setUserImages] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [error, setError] = useState(null); // New state for errors
+  const [error, setError] = useState(null);
 
   const user = JSON.parse(localStorage.getItem("userProfile"));
   const userId = user?._id;
@@ -29,7 +29,7 @@ const UploadSection = () => {
         setImages([]);
       }
     } catch (error) {
-      console.error("Error fetching images:", error);
+      console.error("छवियाँ लाने में त्रुटि:", error);
     }
   };
 
@@ -41,10 +41,20 @@ const UploadSection = () => {
     setError(null);
     if (!files.length) return;
 
-    // Check total images count after upload
     if ((images.length + files.length) > 5) {
-      setError("You can upload a maximum of 5 images.");
+      setError("आप अधिकतम 5 फ़ोटो अपलोड कर सकते हैं।");
       return;
+    }
+
+    for (const file of files) {
+      if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+        setError("केवल JPG, PNG, या WEBP फॉर्मेट ही स्वीकार्य हैं।");
+        return;
+      }
+      if (file.size > 15 * 1024 * 1024) {
+        setError("प्रत्येक फ़ोटो 15 MB से कम होना चाहिए।");
+        return;
+      }
     }
 
     setUploading(true);
@@ -60,13 +70,13 @@ const UploadSection = () => {
       if (userImages) {
         const res = await axios.put(`${API}api/images/${userImages._id}`, {
           images: [...userImages.images, ...urls],
-          title: userImages.title || "User Images"
+          title: userImages.title || "यूज़र फ़ोटो"
         });
         setUserImages(res.data.data);
         setImages(res.data.data.images);
       } else {
         if (urls.length < 3) {
-          setError("Please upload at least 3 images.");
+          setError("कृपया कम से कम 3 फ़ोटो अपलोड करें।");
           setUploading(false);
           return;
         }
@@ -78,8 +88,8 @@ const UploadSection = () => {
         setImages(res.data.data.images);
       }
     } catch (error) {
-      console.error("Upload failed:", error);
-      setError("Upload failed, please try again.");
+      console.error("अपलोड विफल:", error);
+      setError("अपलोड विफल रहा, कृपया पुनः प्रयास करें।");
     } finally {
       setUploading(false);
     }
@@ -88,9 +98,8 @@ const UploadSection = () => {
   const handleDelete = async (urlToDelete) => {
     if (!userImages || !userImages._id) return;
 
-    // Prevent deleting if less than 3 images will remain
     if (images.length <= 3) {
-      setError("You must have at least 3 images.");
+      setError("आपके प्रोफ़ाइल में कम से कम 3 फ़ोटो होनी चाहिए।");
       return;
     }
 
@@ -102,15 +111,15 @@ const UploadSection = () => {
       const updatedImages = images.filter((url) => url !== urlToDelete);
       const res = await axios.put(`${API}api/images/${userImages._id}`, {
         images: updatedImages,
-        title: userImages.title || "User Images",
+        title: userImages.title || "यूज़र फ़ोटो",
       });
 
       setImages(res.data.data.images);
       setUserImages(res.data.data);
-      setError(null); // clear error on successful delete
+      setError(null);
     } catch (error) {
-      console.error("Failed to delete image:", error);
-      setError("Failed to delete image.");
+      console.error("फ़ोटो हटाने में त्रुटि:", error);
+      setError("फ़ोटो हटाने में विफल।");
     }
   };
 
@@ -120,13 +129,18 @@ const UploadSection = () => {
         <div className='bg-[#FFCCA8] py-2 md:py-3 md:px-5 rounded-md'>
           <div className='flex justify-center gap-3 mt-3'>
             <Link to="/setting">
-              <button className='px-5 py-1 cursor-pointer bg-[#FF5A60] text-white text-center rounded-full'>
-                Setting
+              <button
+                className={`px-5 py-1 bg-[#FF5A60] text-white text-center rounded-full ${
+                  uploading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={uploading}
+              >
+                {uploading ? "अपलोड हो रहा है..." : "सेटिंग"}
               </button>
             </Link>
           </div>
 
-          <ProfileThree onUpload={handleUpload} />
+          <ProfileThree onUpload={handleUpload} uploading={uploading} />
 
           {error && (
             <p className="text-center text-red-600 font-semibold mt-2">{error}</p>
@@ -134,26 +148,27 @@ const UploadSection = () => {
 
           <div className='md:w-3/4 lg:w-1/2 mx-auto'>
             <p className='text-center'>
-              Note: You can upload minimum 3 and maximum 5 photos to your profile. Each photo must be less than 15 MB and in jpg, jpeg, png or webp format.
+              नोट: आप अपनी प्रोफ़ाइल में न्यूनतम 3 और अधिकतम 5 फ़ोटो अपलोड कर सकते हैं। प्रत्येक फ़ोटो 15 MB से कम होनी चाहिए और फॉर्मेट jpg, jpeg, png या webp में होनी चाहिए।
             </p>
           </div>
         </div>
       </div>
 
       <div className="p-6">
-        <h1 className="text-center text-2xl font-semibold gilda-display-regular mb-4">My Photos</h1>
+        <h1 className="text-center text-2xl font-semibold gilda-display-regular mb-4">मेरी फ़ोटो</h1>
         <div className="flex justify-center gap-4 flex-wrap">
-          {images.filter(url => url).map((url, index) => (
+          {images.filter(Boolean).map((url, index) => (
             <div key={index} className="relative group w-24 h-24 sm:w-40 sm:h-40">
               <img
                 src={url}
-                alt={`photo-${index}`}
+                alt={`फ़ोटो ${index + 1}`}
+                title={`बड़ी करके देखने के लिए क्लिक करें`}
                 onClick={() => setSelectedImage(url)}
                 className="w-full h-full object-cover rounded-xl shadow-md cursor-pointer"
               />
               <button
                 onClick={() => handleDelete(url)}
-                title="Delete Image"
+                title="फ़ोटो हटाएं"
                 className="absolute top-1 right-1 bg-white text-red-600 border border-red-600 rounded-full p-1 text-sm hover:bg-red-600 hover:text-white transition-colors duration-200"
               >
                 <MdDelete className='cursor-pointer' />
@@ -170,7 +185,7 @@ const UploadSection = () => {
         >
           <img
             src={selectedImage}
-            alt="Zoomed"
+            alt="बड़ी फ़ोटो"
             className="max-w-full max-h-full rounded-lg shadow-lg"
           />
         </div>
