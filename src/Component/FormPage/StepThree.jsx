@@ -273,7 +273,7 @@ const handleChange = (e) => {
     onChange={handleChange}
     className="mt-1 w-full text-[15px] sm:text-[19px] border-0 cursor-pointer border-b border-gray-400 py-2 pr-6 bg-transparent focus:outline-none appearance-none"
   >
-    <option value="">आपका उप-समुदाय?*</option>
+    <option value="">गोत्र*</option>
     {[
       "गौशिल", "गौरुढ", "रावेल", "ढाकरी", "भरट", "भोरज", "बावल", "लल्याण", "गयंद",
       "गौरीयल", "गंगवेर", "अर्गल", "तपशिल", "पर्वोषि", "वामन", "परीवाल", "भूकर्ण", "ढापेल",
