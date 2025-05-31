@@ -1,7 +1,7 @@
 import React from "react";
-import girl1 from "../../assets/Images/Rectangle 394 (1).png";
 import smallflower from "../../assets/Images/jnbdjb 1.png";
 import smallflower1 from "../../assets/Images/jnbdjb 2.png";
+import girl1 from '../../assets/Images/Made with insMind-e8b09888a3fe4655ae6a7ad1b89d98c3 (1).png';
 
 const OurStoriesSection = () => {
   return (

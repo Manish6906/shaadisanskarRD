@@ -3,7 +3,7 @@ import emoji from '../../assets/Images/Untitled-1 2.png';
 
 function OneSection({name}) {
   return (
-    <div className="relative w-full h-60 sm:h-auto flex justify-center  items-cente bg-red-400">
+    <div className="relative w-full h-60 sm:h-auto flex justify-center  items-cente bg-[#FF3540]">
       {/* Background Image */}
       <img src={emoji} alt="emoji" className="w-70 h-70 object-cover ml-170 " />
 

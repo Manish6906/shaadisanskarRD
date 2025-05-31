@@ -36,7 +36,7 @@ const FifthSection = () => {
 
     try {
       const { data } = await axios.post(`${API}api/payment/create-order`, {
-        amount: plan.price * 100,
+        amount: plan.price ,
       });
 
       const options = {
