@@ -30,9 +30,9 @@ function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between">
         {/* {/ Logo /} */}
-        <div>
+        <div className="">
           <Link to="/">
-            <img src={Logo2} alt="Logo2" className="h-25 w-40" />
+            <img src={Logo2} alt="Logo2" className="h-20 w-40" />
           </Link>
         </div>
 
