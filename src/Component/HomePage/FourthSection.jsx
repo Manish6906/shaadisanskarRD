@@ -20,7 +20,7 @@ const OurStoriesSection = () => {
 
       {/* Section heading */}
       <h2 className="text-3xl sm:text-4xl text-center font-semibold mb-16 ">
-        Our <span className="text-red-600 italic">stories</span>
+        हमारी  <span className="text-red-600 italic">कहानी</span>
       </h2>
 
       {/* Main Content */}
@@ -28,12 +28,10 @@ const OurStoriesSection = () => {
         {/* Story Card */}
         <div className="bg-gradient-to-br from-white via-red-50 to-pink-100 w-[90%] sm:w-[320px] h-[400px] rounded-[45%] border border-gray-300 shadow-2xl px-6 py-10 text-center rotate-[4deg] transition-transform duration-500 hover:scale-105 z-10">
           <div className="text-red-600 text-6xl mb-2">❧❧❧</div>
-          <h3 className="text-xl font-semibold italic">First Time We Meet</h3>
-          <p className="text-red-600 text-sm mt-1 mb-3">12 Feb 2023</p>
+          <h3 className="text-xl font-semibold italic">जब हम पहली बार मिले</h3>
+          <p className="text-red-600 text-sm mt-1 mb-3">12 फ़रवरी 2023</p>
           <p className="text-[13px] text-gray-700 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultricies
-            nulla mi tempor morbi nam ornare neque. Leo diam malesuada enim ac
-            arcu urna tempor.
+            उस दिन कुछ ख़ास था। पहली बार मिले, बातें कीं, और महसूस हुआ कि यही वो रिश्ता है जिसकी हमें तलाश थी।वहीं से हमारी ज़िंदगी की सबसे खूबसूरत कहानी की शुरुआत हुई।
           </p>
           <div className="text-red-600 text-6xl mt-4">❧❧❧</div>
         </div>

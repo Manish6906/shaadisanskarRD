@@ -9,7 +9,7 @@ function ContactUsPage() {
   return (
     <>
     <Navbar />
-    <OneSection name="We're here to support journey love " />
+    <OneSection name="हम आपके प्रेम यात्रा में साथ हैं।" />
     <FileTwo />
     <FileFour />
     <Footer />

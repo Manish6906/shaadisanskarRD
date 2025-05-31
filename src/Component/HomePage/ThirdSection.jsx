@@ -9,12 +9,12 @@ import flowerLeft from '../../assets/Images/Zscasssc 2.png';
 import flowerRight from '../../assets/Images/Zscasssc 4.png';
 
 const members = [
-  { id: 1, image: girl, name: 'Anjela, 23' },
-  { id: 2, image: girl1, name: 'Sonia' },
-  { id: 3, image: boy, name: 'Varun' },
-  { id: 4, image: boy1, name: 'Tarun' },
-  { id: 5, image: girl2, name: 'Ankita' },
-  { id: 6, image: girl3, name: 'Simran Kaur' },
+  { id: 1, image: girl, name: 'अंजलि,26' },
+  { id: 2, image: girl1, name: 'सोनिया,28' },
+  { id: 3, image: boy, name: 'वरुण,29' },
+  { id: 4, image: boy1, name: 'तरुण,26' },
+  { id: 5, image: girl2, name: 'अंकिता,25' },
+  { id: 6, image: girl3, name: 'सिमरन कौर,24' },
 ];
 
 function ThirdSection() {
@@ -29,8 +29,8 @@ function ThirdSection() {
 
       {/* Title */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-semibold text-black font-serif">Heartsync Recently</h1>
-        <h2 className="text-3xl text-rose-600 italic mt-2">Joined Members</h2>
+        <h1 className="text-4xl md:text-5xl font-semibold text-black font-serif">हार्टसिंक हाल ही में</h1>
+        <h2 className="text-3xl text-rose-600 italic mt-2">जुड़े हुए सदस्य</h2>
       </div>
 
       {/* Members Grid */}
@@ -50,9 +50,9 @@ function ThirdSection() {
             </div>
             <div className="mt-4 w-48 md:w-56">
               <h3 className="text-lg font-medium text-rose-600">{member.name}</h3>
-              <p className="text-sm text-gray-700 mt-1">
+              {/* <p className="text-sm text-gray-700 mt-1">
                 Learn from them and try to <br /> make it to this board.
-              </p>
+              </p> */}
             </div>
           </div>
         ))}
