@@ -12,8 +12,8 @@ const FifthSection = () => {
   const plans = [
     {
       name: "डायमंड",
-      price: 199,
-      // credits: "30 क्रेडिट्स",
+      price: 1,
+      credits: "100 क्रेडिट्स",
       features: [
         "लोगों को संदेश भेजें",
         "अधिकतम 30 प्रोफाइल्स देखें",
@@ -36,7 +36,7 @@ const FifthSection = () => {
 
     try {
       const { data } = await axios.post(`${API}api/payment/create-order`, {
-        amount: plan.price * 100,
+        amount: plan.price ,
       });
 
       const options = {
@@ -114,7 +114,7 @@ const FifthSection = () => {
               </div>
 
               <h2 className="mt-12 text-2xl font-bold mb-3">{plan.name}</h2>
-              <p className="mb-4 text-sm text-white">{plan.credits}</p>
+              {/* <p className="mb-4 text-sm text-white">{plan.credits}</p> */}
 
               <ul className="space-y-3 mb-6 text-sm text-left w-full">
                 {plan.features.map((feature, i) => (
